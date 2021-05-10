@@ -2,12 +2,12 @@ const express = require('express')
 const router = express.Router()
 const bcrypt = require("bcrypt")
 const bcryptSalt = 10
-
 const User = require('./../models/user.model')
 
 
+//EndPoints
 
-// Signup (post)
+// Signup
 router.post('/signup', (req, res) => {
 
     const { username, password, name, surname, address } = req.body
@@ -33,7 +33,7 @@ router.post('/signup', (req, res) => {
 })
 
 
-// Login (post)
+// Login 
 router.post('/login', (req, res) => {
 
     const { username, password } = req.body
@@ -59,14 +59,31 @@ router.post('/login', (req, res) => {
 })
 
 
+//LogOut
 router.get('/logout', (req, res) => {
     req.session.destroy((err) => res.json({ message: 'Logout successful' }));
 })
 
-router.post('/isloggedin', (req, res) => {
+
+//Check User's Status
+router.post('/isLoggedin', (req, res) => {
     req.session.currentUser ? res.json(req.session.currentUser) : res.status(401).json({ code: 401, message: 'Unauthorized' })
 })
 
+
+//Check Partner's Role
+router.post('/isPartner', (req, res) => {
+    req.session.currentUser.role === 'PARTNER' ? res.json(req.session.currentUser) : res.status(401).json({ code: 401, message: 'Unauthorized' })
+})
+
+
+//Check Admin's Role
+router.post('/isAdmin', (req, res) => {
+    req.session.currentUser.role === 'ADMIN' ? res.json(req.session.currentUser) : res.status(401).json({ code: 401, message: 'Unauthorized' })
+})
+
+
+//Delete User
 router.post('/deleteUser/:user_id', (req, res) => {
 
     User
@@ -75,7 +92,6 @@ router.post('/deleteUser/:user_id', (req, res) => {
         .catch(err => res.status(500).json({ code: 500, message: 'Error deleting  user', err }))
 
 })
-
 
 
 module.exports = router
