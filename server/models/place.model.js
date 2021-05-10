@@ -42,4 +42,4 @@ placeSchema.index({
 
 const Place = mongoose.model('Place', placeSchema)
 
-module.exports = Store
+module.exports = Place
