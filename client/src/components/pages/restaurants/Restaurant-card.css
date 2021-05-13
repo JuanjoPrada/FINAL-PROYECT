@@ -1,0 +1,8 @@
+.places-page .places-card {
+    margin-bottom: 40px;
+}
+
+.places-page .places-card img {
+    height: 180px;
+    object-fit: cover;
+}
