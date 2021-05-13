@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import { Form, Modal, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import AuthService from './../../../service/auth.service'
+import AuthService from '../../../service/auth.service'
 
 class LoginForm extends Component {
 
@@ -28,10 +28,14 @@ class LoginForm extends Component {
             .login(this.state)
             .then(response => {
                 this.setState({ showModal: false })
+                this.props.handleAlert('Conexión Establecida')
                 this.props.storeUser(response.data)
-                this.props.history.push('/registro')          
+                this.props.history.push('/')          
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                const errorMessage = err.response.data.message
+                this.props.handleAlert(errorMessage)
+            })
     }
 
 
@@ -56,7 +60,7 @@ class LoginForm extends Component {
                         </Form.Group>
 
                         <Button variant="dark" style={{ width: '100%', marginTop: '20px' }} type="submit">Iniciar sesión</Button>
-                        <p>Aun no estas registra@?</p>
+                        <p>Aun no estas registrad@?</p>
                         <Link to="/registro" className="btn btn-dark">Registrarse</Link>
 
                     </Form>

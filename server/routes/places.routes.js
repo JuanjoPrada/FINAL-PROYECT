@@ -1,27 +1,33 @@
 const express = require('express')
 const router = express.Router()
-
 const Places = require('./../models/place.model')
-
 
 router.get('/getAllPlaces', (req, res) => {
 
     Places
         .find()
         .select('name city image cost')
-        .then(response =>  res.json(response))
+        .then(response => res.json(response))
         .catch(err => res.status(500).json({ code: 500, message: 'Error fetching places', err }))
 })
 
+router.get('/getAllPlaces/:city', (req, res) => {
+
+    let city = req.params.city
+    Places
+        .find({ city: city })
+        .select('name city image cost')
+        .then(response => res.json(response))
+        .catch(err => res.status(500).json({ code: 500, message: 'Error fetching places', err }))
+})
 
 router.get('/getOnePlace/:place_id', (req, res) => {
 
     Places
         .findById(req.params.place_id)
-        .then(response =>  res.json(response))
+        .then(response => res.json(response))
         .catch(err => res.status(500).json({ code: 500, message: 'Error fetching place', err }))
 })
-
 
 router.post('/newPlace', (req, res) => {
 
@@ -32,7 +38,6 @@ router.post('/newPlace', (req, res) => {
         .then(response => res.json(response))
         .catch(err => res.status(500).json({ code: 500, message: 'Error saving place', err }))
 })
-
 
 router.put('/editPlace/:place_id', (req, res) => {
 
@@ -50,6 +55,5 @@ router.post('/deletePlace/:place_id', (req, res) => {
         .catch(err => res.status(500).json({ code: 500, message: 'Error deleting this place', err }))
 
 })
-
 
 module.exports = router
