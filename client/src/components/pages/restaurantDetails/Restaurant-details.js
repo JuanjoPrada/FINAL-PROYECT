@@ -2,7 +2,6 @@ import { Component } from 'react'
 import RestaurantsService from '../../../service/restaurants.service'
 import { Link } from 'react-router-dom'
 import { Container, Row, Col } from 'react-bootstrap'
-import MapWithAMarker from './../../shared/Map'
 
 class RestaurantDetails extends Component {
 
@@ -52,12 +51,7 @@ class RestaurantDetails extends Component {
                                     <Link to={`/${restaurant.city}/restaurantes`} className="btn btn-dark">Volver al listado</Link>
                                 </Col>
                             </Row>
-                            <MapWithAMarker
-                                googleMapURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyAr9ipwI-lyXYSq3UH8SZk23md2Wt6t77M&v=3.exp&libraries=geometry,drawing,places"
-                                loadingElement={<div style={{ height: `100%` }} />}
-                                containerElement={<div style={{ height: `400px` }} />}
-                                mapElement={<div style={{ height: `100%` }} />}
-                            />
+
                         </>
                 }
             </Container>

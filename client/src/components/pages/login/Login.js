@@ -1,7 +1,7 @@
 import { Container, Row, Col } from 'react-bootstrap'
 import LoginForm from './LoginForm'
 
-const Login = ({ storeUser, history }) => {
+const Login = ({ storeUser, history, handleAlert }) => {
 
     return (
 
@@ -11,7 +11,7 @@ const Login = ({ storeUser, history }) => {
 
                 <Col md={6}>
 
-                    <LoginForm storeUser={storeUser} history={history} />                    
+                    <LoginForm storeUser={storeUser} history={history} handleAlert={handleAlert} />
 
                 </Col>
 
