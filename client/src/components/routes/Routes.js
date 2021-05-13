@@ -9,7 +9,7 @@ import PlacesDetails from '../pages/placesDetails/PlacesDetails'
 import Places from '../pages/places/Places'
 
 
-const Routes = () => {
+const Routes = ({ storeUser, handleAlert }) => {
 
     return (
         <Switch>
@@ -20,7 +20,7 @@ const Routes = () => {
             <Route path="/:city/restaurantes/detalles/:restaurant_id" render={props => <RestaurantDetails {...props} />} />
 
             <Route path="/registro" render={props => <Signup history={props.history} handleAlert={handleAlert} />} />
-            <Route path="/inicio-sesion" render={props => <Login storeUser={storeUser} history={props.history} />} />
+            <Route path="/inicio-sesion" render={props => <Login storeUser={storeUser} history={props.history} handleAlert={handleAlert} />} />
         </Switch>
     )
 }

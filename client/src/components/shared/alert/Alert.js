@@ -5,7 +5,7 @@ const Alert = ({ handleAlert, show, text }) => {
     
     if(text.length > 0) {
     return (
-        <Toast autohide delay={4000} show={show} onClose={() => handleAlert('', false)} style={{ zIndex: 9999, position: 'fixed', top: 20, right: 10, width: 300 }}>
+        <Toast autohide delay={4000} show={show} onClose={() => handleAlert('', false)} style={{ zIndex: 9999, position: 'fixed', top: 55, right: 10, width: 300 }}>
             <Toast.Header closeButton={false} >
                 <img
                     src={logo}

@@ -38,7 +38,7 @@ const Navigation = ({ loggedUser, storeUser, handleAlert }) => {
                         :
                         <>
                             <Link to="/inicio-sesion" className="nav-link">Mi Perfil</Link>
-                            <Link to="/inicio-sesion" className="nav-link"><span onClick={() => logout()} className="nav-link">Cerrar sesión</span></Link>
+                            <Link to="/" className="nav-link"><span onClick={() => logout()} className="nav-link">Cerrar sesión</span></Link>
                             
                             <Link to="/inicio-sesion" className="nav-link">Contacto</Link>
                         </>

@@ -35,7 +35,6 @@ class SignupForm extends Component {
                 this.props.history.push('/inicio-sesion')
             })
             .catch(err => {
-                console.log(err)
                 const errorMessage = err.response.data.message
                 this.props.handleAlert(errorMessage)
             })
