@@ -1,11 +1,16 @@
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './App.css'
 
-function App() {
+import Routes from './routes/Routes'
+
+
+const App = () => {
   return (
-    <div className="App">
-      
-    </div>
-  );
+    <>
+      <main>
+        <Routes />
+      </main>
+    </>
+  )
 }
-
-export default App;
+export default App
