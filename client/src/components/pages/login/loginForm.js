@@ -28,6 +28,7 @@ class LoginForm extends Component {
             .login(this.state)
             .then(response => {
                 this.setState({ showModal: false })
+                this.props.handleAlert('Conexión Establecida')
                 this.props.storeUser(response.data)
                 this.props.history.push('/registro')          
             })
