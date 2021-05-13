@@ -1,11 +1,14 @@
-import './App.css';
+// import { Component } from 'react'
 
-function App() {
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './App.css'
+
+import Routes from './routes/Routes'
+
+const App = () => {
   return (
-    <div className="App">
-      
-    </div>
-  );
+    <Routes />
+  )
 }
 
-export default App;
+export default App
