@@ -1,7 +1,7 @@
 import { Container, Row, Col } from 'react-bootstrap'
-import LoginForm from './loginForm'
+import SignupForm from './SignupForm'
 
-const Login = ({ storeUser, history }) => {
+const Signup = ({ history, handleAlert }) => {
 
     return (
 
@@ -11,7 +11,7 @@ const Login = ({ storeUser, history }) => {
 
                 <Col md={6}>
 
-                    <LoginForm storeUser={storeUser} history={history} />                    
+                    <SignupForm history={history} handleAlert={handleAlert} />
 
                 </Col>
 
@@ -22,4 +22,4 @@ const Login = ({ storeUser, history }) => {
     )
 }
 
-export default Login
+export default Signup

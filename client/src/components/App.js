@@ -3,8 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import AuthServices from './../service/auth.service'
 import Routes from './routes/Routes'
-import Alert from './shared/alert/alert'
-import Navigation from './layout/navigation'
+import Alert from './shared/alert/Alert'
+import Navigation from './layout/Navigation'
 
 
 class App extends Component {

@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import { Form, Modal, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import AuthService from './../../../service/auth.service'
+import AuthService from '../../../service/auth.service'
 
 class LoginForm extends Component {
 

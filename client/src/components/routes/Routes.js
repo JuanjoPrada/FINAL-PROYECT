@@ -1,6 +1,6 @@
 import { Switch, Route } from 'react-router-dom'
-import Login from '../pages/login/login'
-import Signup from '../pages/signup/signup'
+import Login from '../pages/login/Login'
+import Signup from '../pages/signup/Signup'
 import Restaurants from '../pages/restaurants/Restaurants'
 import RestaurantDetails from '../pages/restaurantDetails/Restaurant-details'
 
