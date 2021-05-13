@@ -2,7 +2,7 @@ import { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import AuthServices from './../service/auth.service'
-import Routes from './routes/routes'
+import Routes from './routes/Routes'
 import Alert from './shared/alert/alert'
 
 class App extends Component {

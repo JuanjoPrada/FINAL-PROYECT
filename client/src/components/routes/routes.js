@@ -1,8 +1,8 @@
 import { Switch, Route } from 'react-router-dom'
-import Login from './../../components/pages/login/login'
-import Signup from './../../components/pages/signup/signup'
-import Restaurants from './../pages/restaurants/Restaurants'
-import RestaurantDetails from './../pages/restaurantDetails/Restaurant-details'
+import Login from '../pages/login/login'
+import Signup from '../pages/signup/signup'
+import Restaurants from '../pages/restaurants/Restaurants'
+import RestaurantDetails from '../pages/restaurantDetails/Restaurant-details'
 
 const Routes = ({ storeUser, handleAlert }) => {
 
