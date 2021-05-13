@@ -4,6 +4,8 @@ import './App.css'
 import AuthServices from './../service/auth.service'
 import Routes from './routes/Routes'
 import Alert from './shared/alert/alert'
+import Navigation from './layout/navigation'
+
 
 class App extends Component {
 
@@ -39,6 +41,7 @@ class App extends Component {
 
     return (
       <>
+      <Navigation loggedUser={this.state.loggedUser} storeUser={user => this.storeUser(user)} handleAlert={alertText => this.handleAlert(alertText)} />
       <h1>ESTAMOS IN</h1>
         <main>
           <Routes storeUser={user => this.storeUser(user)} loggedUser={this.state.loggedUser} handleAlert={alertText => this.handleAlert(alertText)} />
