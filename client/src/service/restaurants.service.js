@@ -11,8 +11,8 @@ class RestaurantsService {
 
     getAllRestaurants = (city) => this.app.get(`/getAllRestaurants/${city}`)
     getOneRestaurant = restaurant_id => this.app.get(`/getOneRestaurant/${restaurant_id}`)
-    // newRestaurant = restaurantDetails => this.app.post(`/newRestaurant`, restaurantDetails)
-    // editRestaurant = restaurant_id => this.app.get(`/editRestaurant/${restaurant_id}`)
+    newRestaurant = restaurantDetails => this.app.post(`/newRestaurant`, restaurantDetails)
+    editRestaurant = restaurant_id => this.app.put(`/editRestaurant/${restaurant_id}`)
     // deleteRestaurant = restaurant_id => this.app.get(`/deleteRestaurant/${restaurant_id}`)
 }
 
