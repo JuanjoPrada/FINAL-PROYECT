@@ -16,6 +16,7 @@ router.get('/getAllRestaurants', (req, res) => {
         .catch(err => res.status(500).json({ code: 500, message: 'Error fetching restaurants', err }))
 })
 
+
 router.get('/getAllRestaurants/:city', (req, res) => {
 
     let city = req.params.city

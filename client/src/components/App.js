@@ -4,14 +4,14 @@ import './App.css'
 import AuthServices from './../service/auth.service'
 import Routes from './routes/Routes'
 import Alert from './shared/alert/Alert'
-import Navigation from './layout/Navigation'
+import Navigation from './layout/navigation/Navigation'
 
 class App extends Component {
 
   constructor() {
     super()
     this.state = {
-      loggedUser: null,
+      loggedUser: undefined,
       showAlert: true,
       alertText: ''
     }
@@ -40,12 +40,12 @@ class App extends Component {
 
     return (
       <>
-      <Navigation loggedUser={this.state.loggedUser} storeUser={user => this.storeUser(user)} handleAlert={alertText => this.handleAlert(alertText)} />
-      
+        <Navigation loggedUser={this.state.loggedUser} storeUser={user => this.storeUser(user)} handleAlert={alertText => this.handleAlert(alertText)} />
+
         <main>
-          {this.state.loggedUser !== null ? <Routes storeUser={user => this.storeUser(user)} loggedUser={this.state.loggedUser} handleAlert={alertText => this.handleAlert(alertText)} />: <p>cargando..</p>}
+          {this.state.loggedUser !== null ? <Routes storeUser={user => this.storeUser(user)} loggedUser={this.state.loggedUser} handleAlert={alertText => this.handleAlert(alertText)} /> : <p>cargando..</p>}
         </main>
-          <Alert handleAlert={(alertText, showAlert) => this.handleAlert(alertText, showAlert)} show={this.state.showAlert} text={this.state.alertText} />
+        <Alert handleAlert={(alertText, showAlert) => this.handleAlert(alertText, showAlert)} show={this.state.showAlert} text={this.state.alertText} />
       </>
     )
   }
