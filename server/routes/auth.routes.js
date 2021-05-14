@@ -17,7 +17,7 @@ router.post('/signup', (req, res) => {
         .then(user => {
 
             if (user) {
-                res.status(400).json({ code: 400, message: 'Username already exists' })
+                res.status(400).json({ code: 400, message: 'El nombre de usuario ya existe' })
                 return
             }
 
@@ -26,8 +26,8 @@ router.post('/signup', (req, res) => {
 
             User
                 .create({ username, password: hashPass, name, surname, address })
-                .then(() => res.json({ code: 200, message: 'User created' }))
-                .catch(err => res.status(500).json({ code: 500, message: 'DB error while creating user', err }))
+                .then(() => res.json({ code: 200, message: 'Usuario creado correctamente' }))
+                .catch(err => res.status(500).json({ code: 500, message: 'Error creando usuario', err }))
         })
         .catch(err => res.status(500).json({ code: 500, message: 'DB error while fetching user', err }))
 })
@@ -43,19 +43,22 @@ router.post('/login', (req, res) => {
         .then(user => {
 
             if (!user) {
-                res.status(401).json({ code: 401, message: 'Username not registered', err })
+                res.status(401).json({ code: 401, message: 'Usuario no registrado' })
                 return
             }
 
             if (bcrypt.compareSync(password, user.password) === false) {
-                res.status(401).json({ code: 401, message: 'Incorect password', err })
+                res.status(401).json({ code: 401, message: 'Contraseña incorrecta' })
                 return
             }
 
             req.session.currentUser = user
             res.json(req.session.currentUser)
         })
-        .catch(err => res.status(500).json({ code: 500, message: 'DB error while fetching user', err }))
+        .catch(err => {
+            console.log('-------------')
+            res.status(500).json({ code: 500, message: 'Usuario no encontrado', err })})
+        
 })
 
 

@@ -2,7 +2,8 @@ import { Component } from 'react'
 import RestaurantsService from './../../../service/restaurants.service'
 import RestaurantCard from './Restaurant-card'
 
-import { Row } from 'react-bootstrap'
+import { Row, Button, Modal } from 'react-bootstrap'
+import NewRestaurant from '../newRestaurant/NewRestaurant'
 
 
 
@@ -11,7 +12,8 @@ class RestaurantsList extends Component {
     constructor() {
         super()
         this.state = {
-            restaurants: undefined           
+            restaurants: undefined,
+            showModal: false
         }
         this.restaurantsService = new RestaurantsService()
     }
@@ -34,15 +36,26 @@ class RestaurantsList extends Component {
         const  {restaurants}  = this.state
 
         return (
-            
-           
-            !restaurants
+            <>
+            <Button onClick={() => this.setState({ showModal: true })} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Crear Restaurante</Button>
+                
+
+            {!restaurants
                 ?
                 <h1>CARGANDO</h1>
                 :
                 <Row>
                     {restaurants.map(elm => <RestaurantCard key={elm._id}{...elm} />)}  
-                </Row>     
+                    </Row>}
+                <Modal show={this.state.showModal} onHide={() => this.setState({ showModal: false })}>
+                        <Modal.Header> <Modal.Title>Complete el formulario</Modal.Title> </Modal.Header>
+                        <Modal.Body>
+                            <NewRestaurant  closeModal={() => this.setState({ showModal: false })} refreshCoasters={() => this.loadCoasters()} />
+                        </Modal.Body>
+                </Modal>
+                
+            </>
+            
         )
     }
 }

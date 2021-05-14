@@ -2,8 +2,9 @@ import { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import AuthServices from './../service/auth.service'
-import Routes from './routes/routes'
-import Alert from './shared/alert/alert'
+import Routes from './routes/Routes'
+import Alert from './shared/alert/Alert'
+import Navigation from './layout/Navigation'
 
 class App extends Component {
 
@@ -39,6 +40,7 @@ class App extends Component {
 
     return (
       <>
+      <Navigation loggedUser={this.state.loggedUser} storeUser={user => this.storeUser(user)} handleAlert={alertText => this.handleAlert(alertText)} />
       <h1>ESTAMOS IN</h1>
         <main>
           <Routes storeUser={user => this.storeUser(user)} loggedUser={this.state.loggedUser} handleAlert={alertText => this.handleAlert(alertText)} />
