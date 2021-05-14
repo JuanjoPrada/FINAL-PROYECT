@@ -12,7 +12,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      loggedUser: undefined,
+      loggedUser: null,
       showAlert: true,
       alertText: ''
     }
@@ -42,9 +42,9 @@ class App extends Component {
     return (
       <>
       <Navigation loggedUser={this.state.loggedUser} storeUser={user => this.storeUser(user)} handleAlert={alertText => this.handleAlert(alertText)} />
-      <h1>ESTAMOS IN</h1>
+      
         <main>
-          <Routes storeUser={user => this.storeUser(user)} loggedUser={this.state.loggedUser} handleAlert={alertText => this.handleAlert(alertText)} />
+          {this.state.loggedUser !== null ? <Routes storeUser={user => this.storeUser(user)} loggedUser={this.state.loggedUser} handleAlert={alertText => this.handleAlert(alertText)} />: <p>cargando..</p>}
         </main>
           <Alert handleAlert={(alertText, showAlert) => this.handleAlert(alertText, showAlert)} show={this.state.showAlert} text={this.state.alertText} />
       </>

@@ -37,7 +37,7 @@ const Navigation = ({ loggedUser, storeUser, handleAlert }) => {
                         </>
                         :
                         <>
-                            <Link to="/inicio-sesion" className="nav-link">Mi Perfil</Link>
+                            <Link to="/perfil" className="nav-link">Mi Perfil</Link>
                             <Link to="/" className="nav-link"><span onClick={() => logout()} className="nav-link">Cerrar sesión</span></Link>
                             
                             <Link to="/inicio-sesion" className="nav-link">Contacto</Link>
@@ -45,7 +45,7 @@ const Navigation = ({ loggedUser, storeUser, handleAlert }) => {
                 }
 
 
-                <span className="nav-link">| Hola, {loggedUser ? loggedUser.username : 'invitad@'}</span>
+                <span className="nav-link">| Hola, {loggedUser ? loggedUser.username + '!' : 'invitad@'}</span>
             </Nav>
         </Navbar>
     )
