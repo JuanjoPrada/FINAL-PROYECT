@@ -10,7 +10,9 @@ class PlacesService {
 
     getAllPlaces = (city) => this.app.get(`/getAllPlaces/${city}`)
     getOnePlace = (place_id) => this.app.get(`/getOnePlace/${place_id}`)
-    
+    createPlace = (PlacesDetails) => this.app.post(`/newPlace`, PlacesDetails)
+    editPlace = (place) => this.app.put(`/editPlace/${place._id}`, {place})
+
 }
 
 export default PlacesService

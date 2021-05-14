@@ -1,6 +1,8 @@
 import { Component } from 'react'
 import { Container, Spinner, Row, Col } from 'react-bootstrap'
 import PlacesService from '../../../service/places.service'
+import { Link } from 'react-router-dom'
+
 
 class PlacesDetails extends Component {
     constructor() {
@@ -36,7 +38,7 @@ class PlacesDetails extends Component {
                                     <h3>{place.name}</h3>
                                     <p>{place.cost}</p>
                                     <p>{place.description}</p>
-                                    <p>{place.url}</p>
+                                    <a target="_blank" rel="noreferrer" href={place.url}>{place.url}</a>
                                     <p>{place.address} {place.city}</p>
                                 </Col>
                             </Row>

@@ -45,7 +45,7 @@ const Navigation = ({ loggedUser, storeUser, handleAlert }) => {
                 }
 
 
-                <span className="nav-link">| Hola, {loggedUser ? loggedUser.username : 'invitad@'}</span>
+                <span className="nav-link">Hola, {loggedUser ? loggedUser.username : 'invitad@'}</span>
             </Nav>
         </Navbar>
     )
