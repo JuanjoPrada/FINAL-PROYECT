@@ -10,9 +10,7 @@ import Places from '../pages/places/Places'
 import NewPlace from '../pages/newPlace/NewPlace'
 import EditPlace from '../pages/editPlace/EditPlace'
 
-
 const Routes = ({ storeUser, loggedUser, handleAlert }) => {
-
     return (
         <Switch>
             <Route path="/" exact render={() => <IndexPage />} />
@@ -28,7 +26,5 @@ const Routes = ({ storeUser, loggedUser, handleAlert }) => {
         </Switch>
     )
 }
-
-
 
 export default Routes

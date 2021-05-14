@@ -16,7 +16,8 @@ const restaurantSchema = new Schema({
     },
     foodType: {
         type: String,
-        enum: ["italiana", "asiática", "mediterránea","mexicana", "turca", "americana", "vegana"]
+        // enum: ["variada", "italiana", "asiática", "mediterránea","mexicana", "turca", "americana", "vegana"],
+        // default: "variada"
     },
     image: String,
 
@@ -28,8 +29,8 @@ const restaurantSchema = new Schema({
     
     cost: {
         type: String,
-        enum: ["€", "€€", "€€€"],
-        default: "€",
+        // enum: ["€", "€€", "€€€"],
+        // default: "€",
     },
 
     location: {

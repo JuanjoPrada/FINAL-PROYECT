@@ -52,7 +52,7 @@ router.put('/editPlace/:place_id', (req, res) => {
     delete place.latitude
 
     Places
-        .findByIdAndUpdate(req.params.place_id, place)
+        .findByIdAndUpdate(req.params.place_id, req.body)
         .then(response => res.json(response))
         .catch(err => res.status(500).json({ code: 500, message: 'Error editing this place', err }))
 })
