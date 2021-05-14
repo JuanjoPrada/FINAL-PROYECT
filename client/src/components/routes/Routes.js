@@ -5,15 +5,12 @@ import Signup from '../pages/signup/Signup'
 import Profile from '../pages/profile/Profile'
 import Restaurants from '../pages/restaurants/Restaurants'
 import RestaurantDetails from '../pages/restaurantDetails/Restaurant-details'
-import IndexPage from '../pages/index/Index-page'
 import PlacesDetails from '../pages/placesDetails/PlacesDetails'
 import Places from '../pages/places/Places'
 import NewPlace from '../pages/newPlace/NewPlace'
 import EditPlace from '../pages/editPlace/EditPlace'
 
-
 const Routes = ({ storeUser, loggedUser, handleAlert }) => {
-
     return (
         <Switch>
             <Route path="/" exact render={() => <IndexPage />} />
@@ -29,7 +26,5 @@ const Routes = ({ storeUser, loggedUser, handleAlert }) => {
         </Switch>
     )
 }
-
-
 
 export default Routes

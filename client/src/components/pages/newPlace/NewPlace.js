@@ -15,7 +15,7 @@ class NewPlace extends Component {
             description: '',
             url: '',
             cost: '',
-            location: 0,
+            location: [],
             showModal: true
         }
 
@@ -77,13 +77,14 @@ class NewPlace extends Component {
                             <Form.Control type="text" value={this.state.cost} onChange={e => this.handleInputChange(e)} name="cost" />
                         </Form.Group>
 
-                        <Form.Group controlId="longitude">
-                            <Form.Label>Longitud</Form.Label>
-                            <Form.Control type="number" value={this.state.longitude} onChange={e => this.handleInputChange(e)} name="longitude" />
-                        </Form.Group>
                         <Form.Group controlId="latitude">
                             <Form.Label>Latitud</Form.Label>
                             <Form.Control type="number" value={this.state.longitude} onChange={e => this.handleInputChange(e)} name="latitude" />
+                        </Form.Group>
+
+                        <Form.Group controlId="longitude">
+                            <Form.Label>Longitud</Form.Label>
+                            <Form.Control type="number" value={this.state.longitude} onChange={e => this.handleInputChange(e)} name="longitude" />
                         </Form.Group>
 
                         <Form.Group controlId="description">

@@ -1,8 +1,8 @@
 import { Navbar, Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import logo from './logo.svg'
+import logo from './../navigation/logo.svg'
 import './Navigation.css'
-import AuthService from '../../service/auth.service'
+import AuthService from '../../../service/auth.service'
 
 const Navigation = ({ loggedUser, storeUser, handleAlert }) => {
 
@@ -37,7 +37,7 @@ const Navigation = ({ loggedUser, storeUser, handleAlert }) => {
                         </>
                         :
                         <>
-                            <Link to="/perfil" className="nav-link">Mi Perfil</Link>
+                            <Link to="/inicio-sesion" className="nav-link">Mi Perfil</Link>
                             <Link to="/" className="nav-link"><span onClick={() => logout()} className="nav-link">Cerrar sesión</span></Link>
                             
                             <Link to="/inicio-sesion" className="nav-link">Contacto</Link>
@@ -45,7 +45,7 @@ const Navigation = ({ loggedUser, storeUser, handleAlert }) => {
                 }
 
 
-                <span className="nav-link">| Hola, {loggedUser ? loggedUser.username + '!' : 'invitad@'}</span>
+                <span className="nav-link">| Hola, {loggedUser ? loggedUser.username : 'invitad@'}</span>
             </Nav>
         </Navbar>
     )

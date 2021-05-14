@@ -1,15 +1,14 @@
 import { Component } from 'react'
 import PlacesService from './../../../service/places.service'
 import PlacesCard from './Places-card'
-import { Row, Modal, Spinner } from 'react-bootstrap'
+import { Row, Spinner } from 'react-bootstrap'
 
 class PlacesList extends Component {
 
     constructor() {
         super()
         this.state = {
-            places: undefined,
-            showModal: true
+            places: undefined
         }
         this.placesService = new PlacesService()
     }
@@ -20,6 +19,8 @@ class PlacesList extends Component {
             .getAllPlaces(city)
             .then(response => this.setState({ places: response.data }))
             .catch(err => console.log('ERROR AL CARGAR LOS LUGARES', err))
+
+        console.log('----------AQUI-------', this.props.match.params)
     }
 
     render() {
@@ -28,13 +29,8 @@ class PlacesList extends Component {
         return (
             !places
                 ?
-                <Modal show={this.state.showModal} onHide={() => this.setState({ showModal: false })}>
-                <Modal.Body>
                 <Spinner animation="border" className="spinner" />
-                </Modal.Body>
-                </Modal>
                 :
-                
                 <Row>
                     {places.map(elm => <PlacesCard key={elm._id}{...elm} />)}
                 </Row>
