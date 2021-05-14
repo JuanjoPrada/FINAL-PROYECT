@@ -17,17 +17,6 @@ router.get('/getAllRestaurants', (req, res) => {
 })
 
 router.get('/getAllRestaurants/:city', (req, res) => {
-   
-    const city = req.params.city
-    
-    Restaurant
-        .find({ city: city })
-        .select('name city foodType image cost')
-        .then(response => res.json(response))
-        .catch(err => res.status(500).json({ code: 500, message: 'Error fetching restaurants', err }))
-})
-
-router.get('/getAllRestaurants/:city', (req, res) => {
 
     let city = req.params.city
     city = capitalizeText(city)
