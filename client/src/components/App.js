@@ -6,7 +6,6 @@ import Routes from './routes/Routes'
 import Alert from './shared/alert/Alert'
 import Navigation from './layout/Navigation'
 
-
 class App extends Component {
 
   constructor() {

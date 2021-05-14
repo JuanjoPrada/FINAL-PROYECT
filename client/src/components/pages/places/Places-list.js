@@ -20,8 +20,6 @@ class PlacesList extends Component {
             .getAllPlaces(city)
             .then(response => this.setState({ places: response.data }))
             .catch(err => console.log('ERROR AL CARGAR LOS LUGARES', err))
-
-        console.log('----------AQUI-------', this.props.match.params)
     }
 
     render() {

@@ -41,8 +41,20 @@ router.post('/newPlace', (req, res) => {
 
 router.put('/editPlace/:place_id', (req, res) => {
 
+    const { place } = req.body
+    console.log('---------------------1----------', req.body)
+    delete place.showModal
+
+    place.location = {
+        type: 'Point',
+        coordinates: [place.latitude, place.longitude]
+    }
+    delete place.longitude
+    delete place.latitude
+    console.log('---------------------2----------', place)
+
     Places
-        .findByIdAndUpdate(req.params.place_id, req.body)
+        .findByIdAndUpdate(req.params.place_id, place)
         .then(response => res.json(response))
         .catch(err => res.status(500).json({ code: 500, message: 'Error editing this place', err }))
 })

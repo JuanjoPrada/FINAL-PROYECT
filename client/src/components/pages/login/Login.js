@@ -11,7 +11,7 @@ const Login = ({ storeUser, history, handleAlert }) => {
 
                 <Col md={6}>
 
-                    <LoginForm storeUser={storeUser} history={history} handleAlert={handleAlert} />                    
+                    <LoginForm storeUser={storeUser} history={history} handleAlert={handleAlert} />
 
                 </Col>
 
