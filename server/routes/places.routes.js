@@ -42,7 +42,6 @@ router.post('/newPlace', (req, res) => {
 router.put('/editPlace/:place_id', (req, res) => {
 
     const { place } = req.body
-    console.log('---------------------1----------', req.body)
     delete place.showModal
 
     place.location = {
@@ -51,7 +50,6 @@ router.put('/editPlace/:place_id', (req, res) => {
     }
     delete place.longitude
     delete place.latitude
-    console.log('---------------------2----------', place)
 
     Places
         .findByIdAndUpdate(req.params.place_id, place)

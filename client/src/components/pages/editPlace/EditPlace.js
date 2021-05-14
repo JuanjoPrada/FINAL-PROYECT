@@ -89,13 +89,14 @@ class NewPlace extends Component {
                             <Form.Control type="text" value={this.state.cost} onChange={e => this.handleInputChange(e)} name="cost" />
                         </Form.Group>
 
-                        <Form.Group controlId="longitude">
-                            <Form.Label>Longitud</Form.Label>
-                            <Form.Control type="text" value={this.state.longitude} onChange={e => this.handleInputChange(e)} name="longitude" />
-                        </Form.Group>
                         <Form.Group controlId="latitude">
                             <Form.Label>Latitud</Form.Label>
                             <Form.Control type="text" value={this.state.latitude} onChange={e => this.handleInputChange(e)} name="latitude" />
+                        </Form.Group>
+
+                        <Form.Group controlId="longitude">
+                            <Form.Label>Longitud</Form.Label>
+                            <Form.Control type="text" value={this.state.longitude} onChange={e => this.handleInputChange(e)} name="longitude" />
                         </Form.Group>
 
                         <Form.Group controlId="description">
@@ -108,7 +109,7 @@ class NewPlace extends Component {
                             <Form.Control type="text" value={this.state.image} onChange={e => this.handleInputChange(e)} name="image" />
                         </Form.Group>
 
-                        <Button variant="dark" style={{ width: '100%', marginTop: '20px' }} type="submit">Crear</Button>
+                        <Button variant="dark" style={{ width: '100%', marginTop: '20px' }} type="submit">Editar: {this.state.name} </Button>
                     </Form>
                 </Modal.Body>
             </Modal>

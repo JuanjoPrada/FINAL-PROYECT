@@ -1,8 +1,8 @@
 import { Navbar, Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import logo from './logo.svg'
+import logo from './../navigation/logo.svg'
 import './Navigation.css'
-import AuthService from '../../service/auth.service'
+import AuthService from '../../../service/auth.service'
 
 const Navigation = ({ loggedUser, storeUser, handleAlert }) => {
 
