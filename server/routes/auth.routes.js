@@ -64,24 +64,28 @@ router.post('/login', (req, res) => {
 
 //LogOut
 router.get('/logout', (req, res) => {
+
     req.session.destroy((err) => res.json({ message: 'Logout successful' }));
 })
 
 
 //Check User's Status
 router.post('/isLoggedin', (req, res) => {
+
     req.session.currentUser ? res.json(req.session.currentUser) : res.status(401).json({ code: 401, message: 'Unauthorized' })
 })
 
 
 //Check Partner's Role
 router.post('/isPartner', (req, res) => {
+
     req.session.currentUser.role === 'PARTNER' ? res.json(req.session.currentUser) : res.status(401).json({ code: 401, message: 'Unauthorized' })
 })
 
 
 //Check Admin's Role
 router.post('/isAdmin', (req, res) => {
+    
     req.session.currentUser.role === 'ADMIN' ? res.json(req.session.currentUser) : res.status(401).json({ code: 401, message: 'Unauthorized' })
 })
 
