@@ -1,29 +1,33 @@
-import { Component } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import './App.css'
-import AuthServices from './../service/auth.service'
-import Routes from './routes/Routes'
-import Alert from './shared/alert/Alert'
-import Navigation from './layout/navigation/Navigation'
+import { Component } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import AuthServices from "./../service/auth.service";
+import Routes from "./routes/Routes";
+import Alert from "./shared/alert/Alert";
+import Navigation from "./layout/navigation/Navigation";
+import { Modal, Spinner } from "react-bootstrap";
 
 class App extends Component {
 
   constructor() {
-    super()
+    super();
     this.state = {
-      loggedUser: undefined,
+      loggedUser: null,
       showAlert: true,
-      alertText: ''
+      alertText: "",
+      showModal: true
     }
+    
     this.authService = new AuthServices()
   }
 
-  storeUser = loggedUser => this.setState({ loggedUser })
+  storeUser = (loggedUser) => this.setState({ loggedUser })
 
   fetchUser = () => {
+
     this.authService
       .isloggedin()
-      .then(response => this.setState({ loggedUser: response.data }))
+      .then((response) => this.setState({ loggedUser: response.data }))
       .catch(() => this.setState({ loggedUser: undefined }))
   }
 
@@ -37,18 +41,45 @@ class App extends Component {
 
   render() {
 
-
     return (
+
       <>
-        <Navigation loggedUser={this.state.loggedUser} storeUser={user => this.storeUser(user)} handleAlert={alertText => this.handleAlert(alertText)} />
+        <Navigation
+          loggedUser={this.state.loggedUser}
+          storeUser={(user) => this.storeUser(user)}
+          handleAlert={(alertText) => this.handleAlert(alertText)}/>
 
         <main>
-          {this.state.loggedUser !== null ? <Routes storeUser={user => this.storeUser(user)} loggedUser={this.state.loggedUser} handleAlert={alertText => this.handleAlert(alertText)} /> : <p>cargando..</p>}
+
+          {this.state.loggedUser !== null ? 
+            <Routes
+              storeUser={(user) => this.storeUser(user)}
+              loggedUser={this.state.loggedUser}
+              handleAlert={(alertText) => this.handleAlert(alertText)}
+            />
+           : 
+            <Modal
+              show={this.state.showModal}
+              onHide={() => this.setState({ showModal: false })}
+            >
+              <Modal.Body>
+                <Spinner animation="border" className="spinner" />
+              </Modal.Body>
+            </Modal>
+          }
+
         </main>
-        <Alert handleAlert={(alertText, showAlert) => this.handleAlert(alertText, showAlert)} show={this.state.showAlert} text={this.state.alertText} />
+
+        <Alert
+          handleAlert={(alertText, showAlert) =>
+            this.handleAlert(alertText, showAlert)
+          }
+          show={this.state.showAlert}
+          text={this.state.alertText}/>
+          
       </>
-    )
+    );
   }
 }
 
-export default App
+export default App;

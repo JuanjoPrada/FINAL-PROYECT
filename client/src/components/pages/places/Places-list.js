@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import PlacesService from './../../../service/places.service'
 import PlacesCard from './Places-card'
-import { Row, Spinner } from 'react-bootstrap'
+import { Row, Modal, Spinner } from 'react-bootstrap'
 
 class PlacesList extends Component {
 
@@ -26,16 +26,22 @@ class PlacesList extends Component {
     render() {
         const { places } = this.state
 
-        return (
-            !places
-                ?
-                <Spinner animation="border" className="spinner" />
-                :
-                <Row>
-                    {places.map(elm => <PlacesCard key={elm._id}{...elm} />)}
-                </Row>
-
-        )
+        return !places ? (
+          <Modal
+            show={this.state.showModal}
+            onHide={() => this.setState({ showModal: false })}
+          >
+            <Modal.Body>
+              <Spinner animation="border" className="spinner" />
+            </Modal.Body>
+          </Modal>
+        ) : (
+          <Row>
+            {places.map((elm) => (
+              <PlacesCard key={elm._id} {...elm} />
+            ))}
+          </Row>
+        );
     }
 }
 export default PlacesList

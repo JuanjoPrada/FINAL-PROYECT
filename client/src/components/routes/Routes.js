@@ -11,6 +11,7 @@ import NewPlace from '../pages/newPlace/NewPlace'
 import EditPlace from '../pages/editPlace/EditPlace'
 
 const Routes = ({ storeUser, loggedUser, handleAlert }) => {
+    
     return (
         <Switch>
             <Route path="/" exact render={() => <IndexPage />} />

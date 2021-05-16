@@ -17,12 +17,14 @@ class LoginForm extends Component {
 
 
     handleInputChange(e) {
+
         const { name, value } = e.target
         this.setState({ [name]: value })
     }
 
 
     handleSubmit(e) {
+
         e.preventDefault()
         this.authService
             .login(this.state)
@@ -30,12 +32,11 @@ class LoginForm extends Component {
                 this.setState({ showModal: false })
                 this.props.handleAlert('Conexión Establecida')
                 this.props.storeUser(response.data)
-                this.props.history.push('/')          
-            })
+                this.props.history.push('/')})
             .catch(err => {
+
                 const errorMessage = err.response.data.message
-                this.props.handleAlert(errorMessage)
-            })
+                this.props.handleAlert(errorMessage)})
     }
 
 

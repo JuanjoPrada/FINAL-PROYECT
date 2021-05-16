@@ -1,7 +1,11 @@
 import { Card, Col } from "react-bootstrap";
 
-const ProfileCard = ({ name, surname, username, address, favourites }) => {
+
+
+const ProfileCard = ({ name, surname, username, address }) => {
+
   return (
+    
     <Col lg={6}>
       <Card className="profile-card">
         <Card.Body>
@@ -10,11 +14,12 @@ const ProfileCard = ({ name, surname, username, address, favourites }) => {
           </Card.Title>{" "}
           <Card.Text> Nombre de usuario: {username} </Card.Text>{" "}
           <Card.Text> Dirección: {address} </Card.Text>{" "}
-          <Card.Text> Nombre de usuario: {username} </Card.Text>{" "}
-        </Card.Body>{" "}
+        </Card.Body>
       </Card>{" "}
     </Col>
   );
 };
 
 export default ProfileCard;
+
+
