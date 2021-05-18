@@ -9,6 +9,7 @@ import PlacesDetails from '../pages/placesDetails/PlacesDetails'
 import Places from '../pages/places/Places'
 import NewPlace from '../pages/newPlace/NewPlace'
 import EditPlace from '../pages/editPlace/EditPlace'
+import Events from '../pages/events-view/Events'
 
 const Routes = ({ storeUser, loggedUser, handleAlert }) => {
     
@@ -24,6 +25,7 @@ const Routes = ({ storeUser, loggedUser, handleAlert }) => {
             <Route path="/registro" render={props => <Signup history={props.history} handleAlert={handleAlert} />} />
             <Route path="/inicio-sesion" render={props => <Login storeUser={storeUser} history={props.history} handleAlert={handleAlert} />} />
             <Route path="/perfil" render={() => loggedUser ? <Profile loggedUser={loggedUser} /> : <Redirect to="/inicio-sesion" />} />
+            <Route path="/:city/eventos" exact render={(props) => <Events {...props}/>} />
         </Switch>
     )
 }

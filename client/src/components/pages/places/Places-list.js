@@ -15,6 +15,7 @@ class PlacesList extends Component {
     componentDidMount() {
 
         const { city } = this.props.match.params
+        
         this.placesService
             .getAllPlaces(city)
             .then(response => this.setState({ places: response.data }))
