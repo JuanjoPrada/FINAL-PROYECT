@@ -8,15 +8,18 @@ class NewPlace extends Component {
     constructor() {
         super()
         this.state = {
-            name: '',
-            address: '',
-            city: '',
-            image: '',
-            description: '',
-            url: '',
-            cost: '',
-            location: [],
-            showModal: true
+            place: {
+                name: '',
+                address: '',
+                city: '',
+                image: '',
+                description: '',
+                url: '',
+                cost: '',
+                location: { type: "Point", coordinates: [] },
+            },
+            showModal: true,
+            isUploading: false
         }
 
         this.placesService = new PlacesService()
@@ -24,19 +27,36 @@ class NewPlace extends Component {
 
     handleInputChange(e) {
         const { name, value } = e.target
-        this.setState({ [name]: value })
+        this.setState({ place: { ...this.state.place, [name]: value } })
     }
+
+    handleLocation(e) {
+        const { name, value } = e.target
+        const coords = [this.state.place.location.coordinates[0], this.state.place.location.coordinates[1]]
+
+        if (name === "latitude") {
+            coords[0] = value
+        } else if (name === "longitude") {
+            coords[1] = value
+        }
+
+        this.setState(
+            {
+                place: {
+                    ...this.state.place,
+                    location: { type: "Point", coordinates: coords }
+                }
+            })
+    }
+
 
     handleSubmit(e) {
 
         e.preventDefault()
 
         this.placesService
-            .createPlace(this.state)
-            .then(response => {
-                this.props.closeModal()
-                this.props.refreshCoasters()
-            })
+            .createPlace(this.state.place)
+            .then(() => this.props.history.push('/admin'))
             .catch(err => console.log(err))
     }
 
@@ -79,12 +99,12 @@ class NewPlace extends Component {
 
                         <Form.Group controlId="latitude">
                             <Form.Label>Latitud</Form.Label>
-                            <Form.Control type="number" value={this.state.longitude} onChange={e => this.handleInputChange(e)} name="latitude" />
+                            <Form.Control type="text" value={this.state.longitude} onChange={e => this.handleLocation(e)} name="latitude" />
                         </Form.Group>
 
                         <Form.Group controlId="longitude">
                             <Form.Label>Longitud</Form.Label>
-                            <Form.Control type="number" value={this.state.longitude} onChange={e => this.handleInputChange(e)} name="longitude" />
+                            <Form.Control type="text" value={this.state.longitude} onChange={e => this.handleLocation(e)} name="longitude" />
                         </Form.Group>
 
                         <Form.Group controlId="description">

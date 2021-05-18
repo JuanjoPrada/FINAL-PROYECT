@@ -66,8 +66,8 @@ class NewRestaurant extends Component {
     render() {
         return (
 
-    
-                 <Form onSubmit={e => this.handleSubmit(e)}>
+
+            <Form onSubmit={e => this.handleSubmit(e)}>
 
                 <Form.Group controlId="name">
                     <Form.Label>Nombre</Form.Label>
@@ -87,14 +87,14 @@ class NewRestaurant extends Component {
                 <Form.Group controlId="foodType">
                     <Form.Label>Tipo de Comida</Form.Label>
                     <Form.Control as="select" value={this.state.foodType} onChange={e => this.handleInputChange(e)} name="foodType">
-                    <option>variada</option> 
-                    <option>italiana</option> 
-                    <option>asiática</option>
-                    <option>mediterránea</option>
-                    <option>mexicana</option>
-                    <option>turca</option>
-                    <option>americana</option>
-                    <option>vegana</option>
+                        <option>variada</option>
+                        <option>italiana</option>
+                        <option>asiática</option>
+                        <option>mediterránea</option>
+                        <option>mexicana</option>
+                        <option>turca</option>
+                        <option>americana</option>
+                        <option>vegana</option>
                     </Form.Control>
                 </Form.Group>
 
@@ -113,12 +113,12 @@ class NewRestaurant extends Component {
                     <Form.Control type="text" value={this.state.recommendations} onChange={e => this.handleInputChange(e)} name="recommendations" />
                 </Form.Group>
 
-                 <Form.Group controlId="cost">
+                <Form.Group controlId="cost">
                     <Form.Label>Coste</Form.Label>
                     <Form.Control as="select" value={this.state.cost} onChange={e => this.handleInputChange(e)} name="cost">
-                    <option>€</option>
-                    <option>€€</option>
-                    <option>€€€</option>
+                        <option>€</option>
+                        <option>€€</option>
+                        <option>€€€</option>
                     </Form.Control>
                 </Form.Group>
 

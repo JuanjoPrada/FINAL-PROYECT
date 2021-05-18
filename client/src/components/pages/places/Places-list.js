@@ -16,11 +16,10 @@ class PlacesList extends Component {
 
         const { city } = this.props.match.params
         this.placesService
-            .getAllPlaces(city)
+            .getByCity(city)
             .then(response => this.setState({ places: response.data }))
             .catch(err => console.log('ERROR AL CARGAR LOS LUGARES', err))
 
-        console.log('----------AQUI-------', this.props.match.params)
     }
 
     render() {

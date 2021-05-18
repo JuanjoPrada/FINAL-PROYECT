@@ -37,6 +37,8 @@ class PlacesDetails extends Component {
                                     <p>{place.cost}</p>
                                     <p>{place.description}</p>
                                     <p>{place.url}</p>
+                                    <a target="_blank" rel="noreferrer" href={place.url}>+ info aquí sobre {place.name} </a>
+
                                     <p>{place.address} {place.city}</p>
                                 </Col>
                             </Row>

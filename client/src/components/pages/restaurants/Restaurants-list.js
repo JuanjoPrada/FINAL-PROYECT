@@ -15,47 +15,47 @@ class RestaurantsList extends Component {
             restaurants: undefined,
             showModal: false
         }
-        this.restaurantsService = new RestaurantsService()
+        this.RestaurantsService = new RestaurantsService()
     }
 
 
     componentDidMount() {
 
-        const {city} = this.props.match.params
+        const { city } = this.props.match.params
 
-        this.restaurantsService
-            .getAllRestaurants(city)
+        this.RestaurantsService
+            .getRestaurantsByCity(city)
             .then(response => this.setState({ restaurants: response.data }))
             .catch(err => console.log('ERROR, YA VEREMOS QUE HASCEMOS', err))
     }
 
-  
+
 
     render() {
 
-        const  {restaurants}  = this.state
+        const { restaurants } = this.state
 
         return (
             <>
-            <Button onClick={() => this.setState({ showModal: true })} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Crear Restaurante</Button>
-                
+                <Button onClick={() => this.setState({ showModal: true })} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Crear Restaurante</Button>
 
-            {!restaurants
-                ?
-                <h1>CARGANDO</h1>
-                :
-                <Row>
-                    {restaurants.map(elm => <RestaurantCard key={elm._id}{...elm} />)}  
+
+                {!restaurants
+                    ?
+                    <h1>CARGANDO</h1>
+                    :
+                    <Row>
+                        {restaurants.map(elm => <RestaurantCard key={elm._id}{...elm} />)}
                     </Row>}
                 <Modal show={this.state.showModal} onHide={() => this.setState({ showModal: false })}>
-                        <Modal.Header> <Modal.Title>Complete el formulario</Modal.Title> </Modal.Header>
-                        <Modal.Body>
-                            <NewRestaurant  closeModal={() => this.setState({ showModal: false })} refreshCoasters={() => this.loadCoasters()} />
-                        </Modal.Body>
+                    <Modal.Header> <Modal.Title>Complete el formulario</Modal.Title> </Modal.Header>
+                    <Modal.Body>
+                        <NewRestaurant closeModal={() => this.setState({ showModal: false })} refreshCoasters={() => this.loadCoasters()} />
+                    </Modal.Body>
                 </Modal>
-                
+
             </>
-            
+
         )
     }
 }
