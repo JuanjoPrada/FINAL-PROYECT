@@ -1,7 +1,5 @@
-
 import { Card, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-
 
 const PlacesCard = ({ image, name, cost, _id, city }) => {
     return (
@@ -18,6 +16,5 @@ const PlacesCard = ({ image, name, cost, _id, city }) => {
         </Col >
     )
 }
-
 
 export default PlacesCard

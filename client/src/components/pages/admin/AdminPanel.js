@@ -3,8 +3,11 @@ import PlacesService from './../../../service/places.service'
 import RestaurantsService from './../../../service/restaurants.service'
 import AdminPlacelist from './AdminPlaceList'
 import AdminRestaurantlist from './AdminRestaurantList'
-import { Container, Spinner, Row, Col } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Container, Spinner, Row, Col, Button, Modal } from 'react-bootstrap'
+import NewPlace from './../newPlace/NewPlace'
+import NewRestaurant from './../newRestaurant/NewRestaurant'
+import EditPlace from '../editPlace/EditPlace'
+import EditRestaurant from '../editRestaurant/EditRestaurant'
 
 class AdminPanel extends Component {
 
@@ -12,12 +15,14 @@ class AdminPanel extends Component {
         super()
         this.state = {
             places: undefined,
-            restaurants: undefined
+            restaurants: undefined,
+            showModal: false,
+            modalForm: null
         }
         this.placesService = new PlacesService()
         this.RestaurantsService = new RestaurantsService()
-
     }
+
     componentDidMount() {
         this.loadPlaces()
         this.loadRestaurants()
@@ -51,8 +56,33 @@ class AdminPanel extends Component {
             .catch(err => console.log(err))
     }
 
-    mostrar
+    openCreatePlaceForm() {
+        this.setState({
+            modalForm: <NewPlace closeModalCreatePlace={() => this.setState({ showModal: false })} refreshPlaces={() => this.loadPlaces()} />,
+            showModal: true
+        })
+    }
 
+    openCreateRestaurantForm() {
+        this.setState({
+            modalForm: <NewRestaurant closeModalCreateRestaurant={() => this.setState({ showModal: false })} refreshRestaurants={() => this.loadRestaurants()} />,
+            showModal: true
+        })
+    }
+
+    openEditPlace(_id) {
+        this.setState({
+            modalForm: <EditPlace id={_id} closeModalEditPlace={() => this.setState({ showModal: false })} refreshPlaces={() => this.loadPlaces()} />,
+            showModal: true
+        })
+    }
+
+    openEditRestaurant(_id) {
+        this.setState({
+            modalForm: <EditRestaurant id={_id} closeModalEditRestaurant={() => this.setState({ showModal: false })} refreshRestaurants={() => this.loadRestaurants()} />,
+            showModal: true
+        })
+    }
     render() {
 
         return (
@@ -64,15 +94,20 @@ class AdminPanel extends Component {
                 <Container>
                     <Row>
                         <Col lg={4}>
-                            < Link to={"/lugares-de-interes/crear"} > Crear nuevo lugar de interés</Link >
-                            {this.state.places?.map(elm => <AdminPlacelist key={elm._id}{...elm} deletePlace={() => this.deletePlace(elm._id)} />)}
+                            <Button onClick={() => this.openCreatePlaceForm()} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Crear Lugar de Interés</Button>
+                            {this.state.places?.map(elm => <AdminPlacelist key={elm._id}{...elm} openEditPlace={(_id) => this.openEditPlace(_id)} deletePlace={() => this.deletePlace(elm._id)} />)}
                         </Col >
                         <Col lg={4}>
-                            < Link to={"/lugares-de-interes/crear"} > Crear nuevo lugar de interés</Link >
-                            {this.state.restaurants?.map(elm => <AdminRestaurantlist key={elm._id}{...elm} deleteRestaurant={() => this.deleteRestaurant(elm._id)} />)}
+                            <Button onClick={() => this.openCreateRestaurantForm()} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Crear Restaurante</Button>
+                            {this.state.restaurants?.map(elm => <AdminRestaurantlist key={elm._id}{...elm} openEditRestaurant={(_id) => this.openEditRestaurant(_id)} deleteRestaurant={() => this.deleteRestaurant(elm._id)} />)}
                         </Col >
                     </Row>
-                  
+                    <Modal show={this.state.showModal} onHide={() => this.setState({ showModal: false })}>
+                        <Modal.Body>
+                            {this.state.modalForm}
+                        </Modal.Body>
+                    </Modal>
+
                 </Container>
         )
     }
