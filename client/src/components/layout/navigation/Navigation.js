@@ -34,37 +34,49 @@ const Navigation = ({ loggedUser, storeUser, handleAlert }) => {
       <Nav className="mr-auto">
 
         {
-            !loggedUser ? 
-          <>
-            <Link to="/registro" className="nav-link">
-              Registro
+          !loggedUser ?
+            <>
+              <Link to="/registro" className="nav-link">
+                Registro
             </Link>
-            <Link to="/inicio-sesion" className="nav-link">
-              Iniciar sesión
+              <Link to="/inicio-sesion" className="nav-link">
+                Iniciar sesión
             </Link>
-            <Link to="/inicio-sesion" className="nav-link">
-              Contacto
+              <Link to="/inicio-sesion" className="nav-link">
+                Contacto
             </Link>
-          </>
-         : 
-          <>
-            <Link to="/perfil" className="nav-link">
-              Mi Perfil
-            </Link>
-            <Link to="/" className="nav-link">
-              <span onClick={() => logout()} className="nav-link">
-                Cerrar sesión
-              </span>
+            </>
+            :
+            <>
+              <Link to="/perfil" className="nav-link">
+                Mi Perfil
             </Link>
 
-            <Link to="/inicio-sesion" className="nav-link">
-              Contacto
+              {
+                loggedUser.role === 'ADMIN'
+                  ?
+                  <Link to="/admin" className="nav-link">
+                    Admin
+                  </Link>
+                  :
+                  ''
+              }
+
+              <Link to="/" className="nav-link">
+                <span onClick={() => logout()} className="nav-link">
+                  Cerrar sesión
+              </span>
+              </Link>
+
+              <Link to="/inicio-sesion" className="nav-link">
+                Contacto
             </Link>
-          </>
+
+            </>
         }
 
         <span className="nav-link">
-           {loggedUser ? '| Hola ' + loggedUser.username + "!" : "Bienvenid@"}
+          {loggedUser ? '| Hola ' + loggedUser.username + "!" : "Bienvenid@"}
         </span>
       </Nav>
     </Navbar>

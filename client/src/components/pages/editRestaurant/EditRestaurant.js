@@ -1,12 +1,12 @@
 import { Component } from 'react'
-import { Form, Button, Modal } from 'react-bootstrap'
+import { Form, Button } from 'react-bootstrap'
 import RestaurantsService from '../../../service/restaurants.service'
 import UploadsService from '../../../service/uploads.service'
 
 class EditRestaurant extends Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             restaurant: {
                 name: '',
@@ -20,14 +20,28 @@ class EditRestaurant extends Component {
                 location: { type: "Point", coordinates: [] },
                 _id: undefined
             },
-            isUploading: false,
             showModal: true,
+            isUploading: false
         }
 
         this.restaurantService = new RestaurantsService()
         this.uploadsService = new UploadsService()
     }
 
+
+    componentDidMount() {
+        this.setUpForm()
+
+    }
+
+    setUpForm() {
+        const restaurantId = (this.props.id)
+        this.restaurantService
+            .getOneRestaurant(restaurantId)
+            .then((response) => {
+                this.setState({ restaurant: response.data })
+            })
+    }
 
     handleInputChange(e) {
         const { name, value } = e.target
@@ -37,16 +51,18 @@ class EditRestaurant extends Component {
     handleLocation(e) {
         const { name, value } = e.target
         const coords = [this.state.restaurant.location.coordinates[0], this.state.restaurant.location.coordinates[1]]
+
         if (name === "latitude") {
             coords[0] = value
         } else if (name === "longitude") {
             coords[1] = value
         }
+
         this.setState(
-            {   
+            {
                 restaurant: {
                     ...this.state.restaurant,
-                    location: { type: "Point", coordinates: coords}
+                    location: { type: "Point", coordinates: coords }
                 }
             })
     }
@@ -58,26 +74,15 @@ class EditRestaurant extends Component {
         this.restaurantService
             .editRestaurant(this.state.restaurant)
             .then(() => {
-                this.props.closeModal()
-                this.props.refreshRestaurant()
+                this.props.closeModalEditRestaurant()
+                this.setUpForm()
+                this.props.refreshRestaurants()
             })
             .catch(err => console.log(err))
     }
 
-        componentDidMount() {
 
-        const restaurantId = (this.props.match.params).restaurant_id
-
-        this.restaurantService
-            .getOneRestaurant(restaurantId)
-            .then((response) => {
-            this.setState({restaurant: response.data})
-            })
-    }
-
-  
     handleFileUpload(e) {
-
         this.setState({ isUploading: true })
 
         const uploadData = new FormData()
@@ -93,11 +98,7 @@ class EditRestaurant extends Component {
 
     render() {
         return (
-            <Modal show={this.state.showModal} onHide={() => this.setState({ showModal: false })}>
-                <Modal.Header> <Modal.Title>Editar {this.state.name} </Modal.Title> </Modal.Header>
-                <Modal.Body>
-    
-                 <Form onSubmit={e => this.handleSubmit(e)} closeModal={() => this.setState({ showModal: false })}>
+            <Form onSubmit={e => this.handleSubmit(e)} closeModal={() => this.setState({ showModal: false })}>
 
                 <Form.Group controlId="name">
                     <Form.Label>Nombre</Form.Label>
@@ -152,9 +153,7 @@ class EditRestaurant extends Component {
                 <Button variant="dark" style={{ width: '100%' }} type="submit" disabled={this.state.isUploading}>
                     {this.state.isUploading ? 'Un momento...' : 'Editar restaurante'}
                 </Button>
-                </Form>
-            </Modal.Body>
-        </Modal>
+            </Form>
         )
     }
 }

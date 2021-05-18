@@ -14,7 +14,6 @@ export default class Widget extends Component {
       "w-keyword": "",
       "w-theme": "simple",
       "w-colorscheme": "light",
-      "w-width": "1920",
       "w-height": "286",
       "w-size": "20",
       "w-border": "2",
