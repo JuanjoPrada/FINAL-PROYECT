@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Places = require("./../models/place.model");
 router.get("/getAllPlaces", (req, res) => {
-  Places.find()
+  Places
+    .find()
     .select("name city image cost")
     .then((response) => res.json(response))
     .catch((err) =>
@@ -11,7 +12,8 @@ router.get("/getAllPlaces", (req, res) => {
 });
 router.get("/getAllPlaces/:city", (req, res) => {
   let city = req.params.city;
-  Places.find({ city: city })
+  Places
+    .find({ city: city })
     .select("name city image cost")
     .then((response) => res.json(response))
     .catch((err) =>
@@ -19,7 +21,8 @@ router.get("/getAllPlaces/:city", (req, res) => {
     );
 });
 router.get("/getOnePlace/:place_id", (req, res) => {
-  Places.findById(req.params.place_id)
+  Places
+    .findById(req.params.place_id)
     .then((response) => res.json(response))
     .catch((err) =>
       res.status(500).json({ code: 500, message: "Error fetching place", err })
@@ -27,8 +30,10 @@ router.get("/getOnePlace/:place_id", (req, res) => {
 });
 
 router.post("/newPlace", (req, res) => {
-  const place = req.body;
-  Places.create(place)
+  const place = req.body
+
+  Places
+    .create(place)
     .then((response) => res.json(response))
     .catch((err) =>
       res.status(500).json({ code: 500, message: "Error saving place", err })
@@ -36,8 +41,10 @@ router.post("/newPlace", (req, res) => {
 });
 
 router.put("/editPlace/:place_id", (req, res) => {
-  const place = req.body;
-  Places.findByIdAndUpdate(req.params.place_id, place, { new: true })
+  const place = req.body
+
+  Places
+    .findByIdAndUpdate(req.params.place_id, place, { new: true })
     .then((response) => res.json(response))
     .catch((err) =>
       res
@@ -45,8 +52,10 @@ router.put("/editPlace/:place_id", (req, res) => {
         .json({ code: 500, message: "Error editing this place", err })
     );
 });
-router.post("/deletePlace/:place_id", (req, res) => {
-  Places.findByIdAndDelete(req.params.place_id)
+
+router.delete("/deletePlace/:place_id", (req, res) => {
+  Places
+    .findByIdAndDelete(req.params.place_id)
     .then(() => res.json({ code: 202, message: "Place deleted successfully" }))
     .catch((err) =>
       res

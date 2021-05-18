@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import RestaurantsService from '../../../service/restaurants.service'
 import { Link } from 'react-router-dom'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Modal, Spinner } from 'react-bootstrap'
 import  MapContainer  from "../../shared/map/Map";
 
 class RestaurantDetails extends Component {
@@ -9,7 +9,8 @@ class RestaurantDetails extends Component {
     constructor() {
         super()
         this.state = {
-            restaurant: undefined
+            restaurant: undefined,
+            showModal: true
         }
         this.restaurantService = new RestaurantsService()
     }
@@ -32,7 +33,14 @@ class RestaurantDetails extends Component {
         return (
           <Container>
             {!this.state.restaurant ? (
-              <h1>Cargando...</h1>
+              <Modal
+                show={this.state.showModal}
+                onHide={() => this.setState({ showModal: false })}
+              >
+                <Modal.Body>
+                  <Spinner animation="border" className="spinner" />
+                </Modal.Body>
+              </Modal>
             ) : (
               <>
                 <Row className="justify-content-between">

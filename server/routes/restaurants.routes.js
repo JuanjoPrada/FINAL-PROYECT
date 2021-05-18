@@ -1,14 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const { capitalizeText } = require("./../utils/index");
-
 const Restaurant = require("./../models/restaurant.model");
 
 router.get("/getAllRestaurants", (req, res) => {
-
   Restaurant
     .find()
-    .select("name city foodType image cost")
+    .select("name city foodType ")
     .then((response) => res.json(response))
     .catch((err) =>
       res
@@ -66,7 +64,7 @@ router.put("/editRestaurant/:restaurant_id", (req, res) => {
     );
 });
 
-router.post("/deleteRestaurant/:restaurant_id", (req, res) => {
+router.delete("/deleteRestaurant/:restaurant_id", (req, res) => {
   Restaurant
     .findByIdAndDelete(req.params.restaurant_id)
     .then(() =>

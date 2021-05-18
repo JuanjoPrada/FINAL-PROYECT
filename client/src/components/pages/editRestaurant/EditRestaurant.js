@@ -124,7 +124,7 @@ class EditRestaurant extends Component {
                     <Form.Control type="text" value={this.state.restaurant.recommendations} onChange={e => this.handleInputChange(e)} name="recommendations" />
                 </Form.Group>
 
-                 <Form.Group controlId="cost">
+                <Form.Group controlId="cost">
                     <Form.Label>Coste</Form.Label>
                     <Form.Control type="text" value={this.state.restaurant.cost} onChange={e => this.handleInputChange(e)} name="cost" />
                 </Form.Group>

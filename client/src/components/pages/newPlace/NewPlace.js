@@ -24,14 +24,17 @@ class NewPlace extends Component {
         const { name, value } = e.target
         this.setState({ place: { ...this.state.place, [name]: value } })
     }
+
     handleLocation(e) {
         const { name, value } = e.target
         const coords = [this.state.place.location.coordinates[0], this.state.place.location.coordinates[1]]
+
         if (name === "latitude") {
             coords[0] = value
         } else if (name === "longitude") {
             coords[1] = value
         }
+
         this.setState(
             {
                 place: {
@@ -40,14 +43,13 @@ class NewPlace extends Component {
                 }
             })
     }
+
+
     handleSubmit(e) {
         e.preventDefault()
         this.placesService
             .createPlace(this.state.place)
-            .then(response => {
-                this.props.closeModal()
-                this.props.refreshCoasters()
-            })
+            .then(() => this.props.history.push('/admin'))
             .catch(err => console.log(err))
     }
     render() {
