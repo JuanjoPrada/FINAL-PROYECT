@@ -58,7 +58,6 @@ router.post('/login', (req, res) => {
         .catch(err => {
             console.log('-------------')
             res.status(500).json({ code: 500, message: 'Usuario no encontrado', err })})
-        
 })
 
 
@@ -78,6 +77,7 @@ router.post('/isLoggedin', (req, res) => {
 router.post('/isPartner', (req, res) => {
     req.session.currentUser.role === 'PARTNER' ? res.json(req.session.currentUser) : res.status(401).json({ code: 401, message: 'Unauthorized' })
 })
+
 
 
 //Check Admin's Role

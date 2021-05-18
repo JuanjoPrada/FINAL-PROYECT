@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import { Container, Spinner, Row, Col } from 'react-bootstrap'
 import PlacesService from '../../../service/places.service'
+import MapContainer from './../../shared/map/Map'
 
 class PlacesDetails extends Component {
     constructor() {
@@ -24,28 +25,37 @@ class PlacesDetails extends Component {
         const { place } = this.state
 
         return (
-            <Container>
-                {
-                    !this.state.place ? < Spinner animation="border" className="spinner" /> :
-                        <>
-                            <Row className="justify-content-between">
-                                <Col lg={4} >
-                                    <img src={place.image} alt={place.name} style={{ width: '100%' }} />
-                                </Col>
-                                <Col lg={6}>
-                                    <h3>{place.name}</h3>
-                                    <p>{place.cost}</p>
-                                    <p>{place.description}</p>
-                                    <p>{place.url}</p>
-                                    <p>{place.address} {place.city}</p>
-                                </Col>
-                            </Row>
-                        </>
-                }
-            </Container>
-
-
-        )
+          <Container>
+            {!this.state.place ? (
+              <Spinner animation="border" className="spinner" />
+            ) : (
+              <>
+                <Row className="justify-content-between">
+                  <Col lg={4}>
+                    <img
+                      src={place.image}
+                      alt={place.name}
+                      style={{ width: "100%" }}
+                    />
+                  </Col>
+                  <Col lg={6}>
+                    <h3>{place.name}</h3>
+                    <p>{place.cost}</p>
+                    <p>{place.description}</p>
+                    <p>{place.url}</p>
+                    <p>
+                      {place.address} {place.city}
+                    </p>
+                  </Col>
+                </Row>
+                <br></br>
+                <Row>
+                  <MapContainer {...this.props} />
+                </Row>
+              </>
+            )}
+          </Container>
+        );
     }
 }
 

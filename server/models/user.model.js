@@ -28,7 +28,7 @@ const userSchema = new Schema({
         enum: ["USER", "ADMIN", "PARTNER"],
         default: "USER"
     },
-    favorites: {
+    favourites: {
         places: [{
             type: Schema.Types.ObjectId,
             ref: "Place"

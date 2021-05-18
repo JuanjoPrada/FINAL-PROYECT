@@ -26,7 +26,7 @@ class RestaurantsList extends Component {
         this.restaurantsService
             .getAllRestaurants(city)
             .then(response => this.setState({ restaurants: response.data }))
-            .catch(err => console.log('ERROR, YA VEREMOS QUE HASCEMOS', err))
+            .catch(err => console.log('ERROR AL MOSTRAR LOS RESTAURANTES', err))
     }
 
   
@@ -50,7 +50,7 @@ class RestaurantsList extends Component {
                 <Modal show={this.state.showModal} onHide={() => this.setState({ showModal: false })}>
                         <Modal.Header> <Modal.Title>Complete el formulario</Modal.Title> </Modal.Header>
                         <Modal.Body>
-                            <NewRestaurant  closeModal={() => this.setState({ showModal: false })} refreshCoasters={() => this.loadCoasters()} />
+                            <NewRestaurant show={this.state.showModal} closeModal={() => this.setState({ showModal: false })} refreshRestaurant={() => this.loadRestaurant()} />
                         </Modal.Body>
                 </Modal>
                 

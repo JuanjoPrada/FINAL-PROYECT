@@ -17,4 +17,5 @@ class AuthService {
     isadmin = () => this.app.post('/isAdmin')
 }
 
+
 export default AuthService

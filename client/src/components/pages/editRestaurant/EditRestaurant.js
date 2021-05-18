@@ -1,27 +1,27 @@
-// --------- TODO ----------------->>>>>
-
 import { Component } from 'react'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Modal } from 'react-bootstrap'
 import RestaurantsService from '../../../service/restaurants.service'
 import UploadsService from '../../../service/uploads.service'
 
 class EditRestaurant extends Component {
 
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.state = {
             restaurant: {
-                name: "",
-                address: "",
-                city: "",
-                foodType: "",
+                name: '',
+                address: '',
+                city: '',
+                foodType: '',
                 image: '',
-                description: "",
-                recommendations: "",
-                cost: "",
-                location: "",
+                description: '',
+                recommendations: '',
+                cost: '',
+                location: { type: "Point", coordinates: [] },
+                _id: undefined
             },
-            isUploading: false
+            isUploading: false,
+            showModal: true,
         }
 
         this.restaurantService = new RestaurantsService()
@@ -34,11 +34,26 @@ class EditRestaurant extends Component {
         this.setState({ restaurant: { ...this.state.restaurant, [name]: value } })
     }
 
+    handleLocation(e) {
+        const { name, value } = e.target
+        const coords = [this.state.restaurant.location.coordinates[0], this.state.restaurant.location.coordinates[1]]
+        if (name === "latitude") {
+            coords[0] = value
+        } else if (name === "longitude") {
+            coords[1] = value
+        }
+        this.setState(
+            {   
+                restaurant: {
+                    ...this.state.restaurant,
+                    location: { type: "Point", coordinates: coords}
+                }
+            })
+    }
 
     handleSubmit(e) {
 
         e.preventDefault()
-
 
         this.restaurantService
             .editRestaurant(this.state.restaurant)
@@ -49,7 +64,18 @@ class EditRestaurant extends Component {
             .catch(err => console.log(err))
     }
 
+        componentDidMount() {
 
+        const restaurantId = (this.props.match.params).restaurant_id
+
+        this.restaurantService
+            .getOneRestaurant(restaurantId)
+            .then((response) => {
+            this.setState({restaurant: response.data})
+            })
+    }
+
+  
     handleFileUpload(e) {
 
         this.setState({ isUploading: true })
@@ -67,67 +93,68 @@ class EditRestaurant extends Component {
 
     render() {
         return (
-
+            <Modal show={this.state.showModal} onHide={() => this.setState({ showModal: false })}>
+                <Modal.Header> <Modal.Title>Editar {this.state.name} </Modal.Title> </Modal.Header>
+                <Modal.Body>
     
-                 <Form onSubmit={e => this.handleSubmit(e)}>
+                 <Form onSubmit={e => this.handleSubmit(e)} closeModal={() => this.setState({ showModal: false })}>
 
                 <Form.Group controlId="name">
                     <Form.Label>Nombre</Form.Label>
-                    <Form.Control type="text" value={this.state.name} onChange={e => this.handleInputChange(e)} name="name" />
+                    <Form.Control type="text" value={this.state.restaurant.name} onChange={e => this.handleInputChange(e)} name="name" />
                 </Form.Group>
 
                 <Form.Group controlId="address">
                     <Form.Label>Dirección</Form.Label>
-                    <Form.Control type="text" value={this.state.address} onChange={e => this.handleInputChange(e)} name="address" />
+                    <Form.Control type="text" value={this.state.restaurant.address} onChange={e => this.handleInputChange(e)} name="address" />
                 </Form.Group>
 
                 <Form.Group controlId="city">
                     <Form.Label>Ciudad</Form.Label>
-                    <Form.Control type="text" value={this.state.city} onChange={e => this.handleInputChange(e)} name="city" />
+                    <Form.Control type="text" value={this.state.restaurant.city} onChange={e => this.handleInputChange(e)} name="city" />
                 </Form.Group>
 
                 <Form.Group controlId="foodType">
-                    <Form.Label>Tipo de Comida</Form.Label>
-                    <Form.Control as="select" value={this.state.foodType} onChange={e => this.handleInputChange(e)} name="foodType">
-                    <option>variada</option> 
-                    <option>italiana</option> 
-                    <option>asiática</option>
-                    <option>mediterránea</option>
-                    <option>mexicana</option>
-                    <option>turca</option>
-                    <option>americana</option>
-                    <option>vegana</option>
-                    </Form.Control>
-                </Form.Group>
-
-                <Form.Group controlId="image">
-                    <Form.Label>Imagen</Form.Label>
-                    <Form.Control type="file" onChange={e => this.handleFileUpload(e)} />
-                </Form.Group>
-
-                <Form.Group controlId="description">
-                    <Form.Label>Descripción</Form.Label>
-                    <Form.Control as="textarea" rows={3} value={this.state.description} onChange={e => this.handleInputChange(e)} name="description" />
+                    <Form.Label>Tipo de comida</Form.Label>
+                    <Form.Control type="text" value={this.state.restaurant.foodType} onChange={e => this.handleInputChange(e)} name="foodType" />
                 </Form.Group>
 
                 <Form.Group controlId="recommendations">
                     <Form.Label>Platos Recomendados</Form.Label>
-                    <Form.Control type="text" value={this.state.recommendations} onChange={e => this.handleInputChange(e)} name="recommendations" />
+                    <Form.Control type="text" value={this.state.restaurant.recommendations} onChange={e => this.handleInputChange(e)} name="recommendations" />
                 </Form.Group>
 
                  <Form.Group controlId="cost">
                     <Form.Label>Coste</Form.Label>
-                    <Form.Control as="select" value={this.state.cost} onChange={e => this.handleInputChange(e)} name="cost">
-                    <option>€</option>
-                    <option>€€</option>
-                    <option>€€€</option>
-                    </Form.Control>
+                    <Form.Control type="text" value={this.state.restaurant.cost} onChange={e => this.handleInputChange(e)} name="cost" />
                 </Form.Group>
 
+                <Form.Group controlId="latitude">
+                    <Form.Label>Latitud</Form.Label>
+                    <Form.Control type="text" value={this.state.restaurant.location.coordinates[0]} onChange={e => this.handleLocation(e)} name="latitude" />
+                </Form.Group>
+
+                <Form.Group controlId="longitude">
+                    <Form.Label>Longitud</Form.Label>
+                    <Form.Control type="text" value={this.state.restaurant.location.coordinates[1]} onChange={e => this.handleLocation(e)} name="longitude" />
+                </Form.Group>
+
+                <Form.Group controlId="description">
+                    <Form.Label>Descripción</Form.Label>
+                    <Form.Control as="textarea" rows={3} value={this.state.restaurant.description} onChange={e => this.handleInputChange(e)} name="description" />
+                </Form.Group>
+                <br></br>
+                <Form.Group controlId="image">
+                    <Form.Label>Imagen</Form.Label>
+                    <Form.Control type="file" onChange={e => this.handleFileUpload(e)} />
+                </Form.Group>
+                <br></br>
                 <Button variant="dark" style={{ width: '100%' }} type="submit" disabled={this.state.isUploading}>
-                    {this.state.isUploading ? 'Un momento...' : 'Crear restaurante'}
+                    {this.state.isUploading ? 'Un momento...' : 'Editar restaurante'}
                 </Button>
-            </Form>
+                </Form>
+            </Modal.Body>
+        </Modal>
         )
     }
 }
