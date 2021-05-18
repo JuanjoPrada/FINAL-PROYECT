@@ -10,8 +10,10 @@ import Places from '../pages/places/Places'
 import NewPlace from '../pages/newPlace/NewPlace'
 import EditPlace from '../pages/editPlace/EditPlace'
 import AdminPanel from '../pages/admin/AdminPanel'
+import Events from '../pages/events-view/Events'
 
 const Routes = ({ storeUser, loggedUser, handleAlert }) => {
+    
     return (
         <Switch>
             <Route path="/" exact render={() => <IndexPage />} />
@@ -26,6 +28,7 @@ const Routes = ({ storeUser, loggedUser, handleAlert }) => {
             <Route path="/inicio-sesion" render={props => <Login storeUser={storeUser} history={props.history} handleAlert={handleAlert} />} />
             <Route path="/perfil" render={() => loggedUser ? <Profile loggedUser={loggedUser} /> : <Redirect to="/inicio-sesion" />} />
             <Route path="/admin" exact render={props => <AdminPanel {...props} />} />
+            <Route path="/:city/eventos" exact render={(props) => <Events {...props}/>} />
         </Switch>
     )
 }
