@@ -20,6 +20,6 @@ require('./config/locals.config')(app)
 require('./routes')(app)
 
 // Error handling
-require('./config/error-handlers.config')(app)
+app.use((req, res) => res.sendFile(__dirname + "/public/index.html"));
 
 module.exports = app
