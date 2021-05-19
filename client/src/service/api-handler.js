@@ -34,4 +34,4 @@ class TmasterApp {
     );
 }
 
-module.exports = TmasterApp;
+export default TmasterApp;

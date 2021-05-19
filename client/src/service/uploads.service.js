@@ -1,16 +1,14 @@
-import axios from 'axios'
+import axios from "axios";
 
 class UploadsService {
+  constructor() {
+    this.app = axios.create({
+      baseURL: `${process.env.REACT_APP_BASE_URL}/uploads`,
+      withCredentials: true,
+    });
+  }
 
-    constructor() {
-        
-        this.app = axios.create({
-            baseURL: 'http://localhost:5000/api/uploads',
-            withCredentials: true
-        })
-    }
-
-    uploadimage = imageForm => this.app.post('/image', imageForm)
+  uploadimage = (imageForm) => this.app.post("/image", imageForm);
 }
 
-export default UploadsService
+export default UploadsService;

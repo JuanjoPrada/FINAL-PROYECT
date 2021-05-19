@@ -1,4 +1,0 @@
-{"_id":{"$oid":"609db1bae5d0344fbd2b4ffe"},"name":"test","address":"test","city":"Madrid","image":"https://static.carrefour.es/hd_350x_/img_pim_food/197236_00_1.jpg","description":"test","url":"www","cost":"gratis","__v":0}
-{"_id":{"$oid":"609db1bee5d0344fbd2b4fff"},"name":"test","address":"test","city":"Madrid","image":"https://static.carrefour.es/hd_350x_/img_pim_food/197236_00_1.jpg","description":"test","url":"www","cost":"gratis","__v":0}
-{"_id":{"$oid":"609db1c0e5d0344fbd2b5000"},"name":"test","address":"test","city":"Madrid","image":"https://static.carrefour.es/hd_350x_/img_pim_food/197236_00_1.jpg","description":"test","url":"www","cost":"gratis","__v":0}
-{"_id":{"$oid":"609db1c2e5d0344fbd2b5001"},"name":"test","address":"test","city":"Madrid","image":"https://es.wikipedia.org/wiki/Historia_de_la_Puerta_del_Sol#/media/Archivo:Tragabolas_en_la_Puerta_del_Sol.jpg","description":"test","url":"www","cost":"gratis","__v":0}

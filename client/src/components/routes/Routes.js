@@ -28,6 +28,7 @@ const Routes = ({ storeUser, loggedUser, handleAlert, adminUser }) => {
             <Route path="/perfil" render={() => loggedUser ? <Profile loggedUser={loggedUser} /> : <Redirect to="/inicio-sesion" />} />
             <Route path="/admin" render={props => loggedUser.role === "ADMIN" ? <AdminPanel {...props} adminUser={adminUser} /> : <Redirect to="/inicio-sesion" />} />
             <Route path="/:city/eventos" exact render={props => <Events {...props} />} />
+            <Redirect to="/404" />
 
         </Switch>
     )
