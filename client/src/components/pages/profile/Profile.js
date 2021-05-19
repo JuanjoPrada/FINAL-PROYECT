@@ -5,9 +5,7 @@ import ProfileService from "../../../service/profile.service";
 import ShowFavourites from "./ShowFavourites";
 
 class Profile extends Component {
-
   constructor() {
-
     super();
     this.state = {
       places: [],
@@ -17,25 +15,25 @@ class Profile extends Component {
     this.profileService = new ProfileService();
   }
 
-
   componentDidMount() {
-
-    this.getAllFavourites()
-
+    this.getAllFavourites();
   }
 
   getAllFavourites() {
-
     this.profileService
       .getFavs()
-      .then((response) =>
-        this.setState({ places: response.data.favorites.places })
-      )
+      .then((response) => {
+        console.log(response.data);
+        this.setState({
+          places: response.data.favouritePlaces,
+          restaurants: response.data.favouriteRestaurants,
+          events: response.data.favouriteEvents,
+        });
+      })
       .catch((err) => console.log("ERROR AL CARGAR LOS DATOS", err));
   }
 
   render() {
-
     return (
       <>
         <h1>Perfilaco</h1>
