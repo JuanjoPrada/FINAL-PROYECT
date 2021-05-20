@@ -49,7 +49,7 @@ class Events extends Component {
         <Container>
         <Link className="btn btn-outline-light" to={`/${city}/categorias`}> ← Volver</Link>
         <Widget />
-        <h1>Proximos Eventos en {city}</h1>
+        <h5 className='events'>Próximos Eventos en {city}</h5>
         <hr />
         <Row>
           {events.map((elm) => (

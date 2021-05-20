@@ -8,7 +8,7 @@ import NewPlace from './../newPlace/NewPlace'
 import NewRestaurant from './../newRestaurant/NewRestaurant'
 import EditPlace from '../editPlace/EditPlace'
 import EditRestaurant from '../editRestaurant/EditRestaurant'
-
+import './Admin.css'
 class AdminPanel extends Component {
 
     constructor() {
@@ -90,26 +90,38 @@ class AdminPanel extends Component {
                 ?
                 <Spinner animation="border" className="spinner" />
                 :
+                <div className='admin-panel'>
+                    <Container>
+                        <Row>
+                            <Col lg={6}>
+                                <div className='admin-list' >
+                                    <div className='create-btn'>
+                                        <Button onClick={() => this.openCreatePlaceForm()} variant="primary" size="sm" style={{ marginBottom: '20px' }}>Crear Lugar de Interés</Button>
+                                    </div>
+                                    <div>
+                                        {this.state.places?.map(elm => <AdminPlacelist key={elm._id}{...elm} openEditPlace={(_id) => this.openEditPlace(_id)} deletePlace={() => this.deletePlace(elm._id)} />)}
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col lg={6}>
+                                <div className='create-btn'>
+                                    <Button onClick={() => this.openCreateRestaurantForm()} variant="warning" size="sm" style={{ marginBottom: '20px' }}>Crear Restaurante</Button>
+                                </div>
+                                <div>
+                                    {this.state.restaurants?.map(elm => <AdminRestaurantlist key={elm._id}{...elm} openEditRestaurant={(_id) => this.openEditRestaurant(_id)} deleteRestaurant={() => this.deleteRestaurant(elm._id)} />)}
+                                </div>
+                            </Col>
+                        </Row>
+                        <Modal show={this.state.showModal} onHide={() => this.setState({ showModal: false })}>
+                            <Modal.Body>
+                                {this.state.modalForm}
+                            </Modal.Body>
+                        </Modal>
 
-                <Container>
-                    <Row>
-                        <Col lg={4}>
-                            <Button onClick={() => this.openCreatePlaceForm()} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Crear Lugar de Interés</Button>
-                            {this.state.places?.map(elm => <AdminPlacelist key={elm._id}{...elm} openEditPlace={(_id) => this.openEditPlace(_id)} deletePlace={() => this.deletePlace(elm._id)} />)}
-                        </Col>
-                        <Col lg={4}>
-                            <Button onClick={() => this.openCreateRestaurantForm()} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Crear Restaurante</Button>
-                            {this.state.restaurants?.map(elm => <AdminRestaurantlist key={elm._id}{...elm} openEditRestaurant={(_id) => this.openEditRestaurant(_id)} deleteRestaurant={() => this.deleteRestaurant(elm._id)} />)}
-                        </Col>
-                    </Row>
-                    <Modal show={this.state.showModal} onHide={() => this.setState({ showModal: false })}>
-                        <Modal.Body>
-                            {this.state.modalForm}
-                        </Modal.Body>
-                    </Modal>
-
-                </Container>
+                    </Container>
+                </div>
         )
+
     }
 }
 export default AdminPanel

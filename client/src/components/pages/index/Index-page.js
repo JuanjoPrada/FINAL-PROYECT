@@ -47,7 +47,7 @@ const IndexPage = () => {
                                         <Card.Title>No te pierdas lo último en espectáculos</Card.Title>
                                     </Card.Body>
                                 </Card></Col>
-¡                            </Row>
+                            </Row>
                         </Container>
 
                     </div>
@@ -55,7 +55,7 @@ const IndexPage = () => {
                 <section>
                     <div className='explore'>
                         <Link to={'/ciudades'} >
-                            <p className='explore-link'>¡Explora tu ciudad! </p>
+                            <h4 className='explore-link'>¡Explora tu ciudad! </h4>
                         </Link>
                     </div>
                 </section>

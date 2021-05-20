@@ -90,18 +90,18 @@ class MapContainer extends Component {
       }}>
         {longitude &&
           <Map
-          style={{
-            width: "80%",
-            height: "300px",
-            margin: "0 auto",
-            borderRadius: "10px",
-          }}
-          google={this.props.google}
-          zoom={12}
-          initialCenter={{ lat: latitude, lng: longitude }}
-          disableDefaultUI={true}
+            style={{
+              width: "80%",
+              height: "300px",
+              margin: "0 auto",
+              borderRadius: "10px",
+            }}
+            google={this.props.google}
+            zoom={15}
+            initialCenter={{ lat: latitude, lng: longitude }}
+            disableDefaultUI={true}
           >
-          {this.displayMarkers()}
+            {this.displayMarkers()}
           </Map>}
       </div>
     );

@@ -13,6 +13,10 @@ const CityList = () => {
                 <Link className='city-title2' to={'/barcelona/categorias'} ><p>Barcelona</p>
                 </Link>
             </div>
+            <div className='city-container city-container-sev'>
+                <Link className='city-title2' to={'/sevilla/categorias'} ><p>Sevilla</p>
+                </Link>
+            </div>
         </>
     )
 }
