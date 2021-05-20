@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Card, Row, Col, Container } from "react-bootstrap";
 import './Index.css'
-import place from './place-dark.png'
+import place from './place-logo.png'
 import restaurant from './restaurant-logo.png'
 import show from './show-logo.png'
 

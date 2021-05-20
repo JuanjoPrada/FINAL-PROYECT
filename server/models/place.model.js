@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const { capitalizeText } = require('../utils')
 const Schema = mongoose.Schema
 
 const placeSchema = new Schema({
@@ -10,7 +11,8 @@ const placeSchema = new Schema({
     
     city: {
         type: String,
-        required: [true, 'Debes introducir una ciudad']
+        required: [true, 'Debes introducir una ciudad'],
+        set: (value) => capitalizeText(value)
     },
     image: {
         type: String,

@@ -15,15 +15,13 @@
 .hero h1 {
     position: absolute;
     color: #fff;
-    font-size: 7em; 
+    font-size: 7.5vw; 
     font-weight: 700;
     width: 300px;
     padding-top: 100px;
     padding-left: 200px;
 }
-.front-card {
-    background-color: red;
-}
+
 .card-container h2 {
     color: #fff;
     text-align: center;
@@ -45,6 +43,7 @@
 .card-size-front {
     height: 110%;
     width: 100%;
+    color: #fff;
 }
 .card-container {
     margin-top: 8%;
