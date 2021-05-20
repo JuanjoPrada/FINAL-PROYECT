@@ -21,6 +21,7 @@
   "scripts": {
     "start": "REACT_APP_TMAPI_KEY=oGfB9moRTPyVnKLJHowq3XANU6acUF4b REACT_APP_BASE_URL=http://localhost:5000/api react-scripts start",
     "build": "REACT_APP_BASE_URL=https://ohmyplan.herokuapp.com/api REACT_APP_TMAPI_KEY=oGfB9moRTPyVnKLJHowq3XANU6acUF4b react-scripts build",
+    "deploy": "rm -rf build/*; rm -rf ../server/public/*; npm run build; mv build/* ../server/public; cd ..; git add .; git commit -m deploy; git subtree push --prefix=server heroku_app_master master",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
