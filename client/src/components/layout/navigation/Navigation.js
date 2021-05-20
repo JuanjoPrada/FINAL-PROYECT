@@ -1,6 +1,6 @@
 import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import logo from "./../navigation/logo.svg";
+import logo from "./../navigation/logo.png";
 import "./Navigation.css";
 import AuthService from "../../../service/auth.service";
 const authService = new AuthService();
@@ -19,16 +19,17 @@ const Navigation = ({ loggedUser, storeUser, handleAlert }) => {
 
   return (
 
-    <Navbar bg="dark" variant="dark" className="justify-content-between">
+    <Navbar bg="dark" variant="dark" className="justify-content-between nav-bar">
       <Navbar.Brand>
-        <img
-          alt=""
-          src={logo}
-          width="30"
-          height="30"
-          className="d-inline-block align-top"
-        />{" "}
-        NameOfApp!
+        <Link to="/" className="nav-link">
+          <img
+            alt="Oh-my-plan-logo"
+            src={logo}
+            width="70"
+            height="65"
+            className="d-inline-block align-top nav-logo"
+          />{" "}
+        </Link>
       </Navbar.Brand>
 
       <Nav className="mr-auto">
@@ -36,14 +37,8 @@ const Navigation = ({ loggedUser, storeUser, handleAlert }) => {
         {
           !loggedUser ?
             <>
-              <Link to="/registro" className="nav-link">
-                Registro
-            </Link>
               <Link to="/inicio-sesion" className="nav-link">
                 Iniciar sesión
-            </Link>
-              <Link to="/inicio-sesion" className="nav-link">
-                Contacto
             </Link>
             </>
             :
@@ -67,17 +62,15 @@ const Navigation = ({ loggedUser, storeUser, handleAlert }) => {
                   Cerrar sesión
               </span>
               </Link>
-
-              <Link to="/inicio-sesion" className="nav-link">
-                Contacto
-            </Link>
-
             </>
         }
+        <Link to="/contacto" className="nav-link">
+          Contacto
+            </Link>
 
-        <span className="nav-link">
-          {loggedUser ? '| Hola ' + loggedUser.username + "!" : "Bienvenid@"}
-        </span>
+        {
+          loggedUser ? <span className="nav-link"> {'¡Hola, ' + loggedUser.username + "!" } </span> : ''
+        }
       </Nav>
     </Navbar>
   );

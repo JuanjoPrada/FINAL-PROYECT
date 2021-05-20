@@ -2,7 +2,8 @@ import { Component } from 'react'
 import RestaurantsService from '../../../service/restaurants.service'
 import { Link } from 'react-router-dom'
 import { Container, Row, Col, Modal, Spinner } from 'react-bootstrap'
-import  MapContainer  from "../../shared/map/Map";
+import MapContainer from "../../shared/map/Map";
+import './RestaurantDetails.css'
 
 class RestaurantDetails extends Component {
 
@@ -42,7 +43,11 @@ class RestaurantDetails extends Component {
                 </Modal.Body>
               </Modal>
             ) : (
-              <>
+                <>
+                  <br></br>
+                  <Link className= "btn btn-outline-light" to={`/${restaurant.city}/restaurantes`}>Volver</Link>
+                  <br></br>
+                  <br></br>
                 <Row className="justify-content-between">
                   <Col md={4}>
                     <img
@@ -65,12 +70,6 @@ class RestaurantDetails extends Component {
                       <strong>Tipo de Comida:</strong> {restaurant.foodType}
                     </p>
                     <hr />
-                    <Link
-                      to={`/${restaurant.city}/restaurantes`}
-                      className="btn btn-dark"
-                    >
-                      Volver al listado
-                    </Link>
                   </Col>
                 </Row>
                 <br></br>

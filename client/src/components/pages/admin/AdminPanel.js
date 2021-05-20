@@ -96,11 +96,11 @@ class AdminPanel extends Component {
                         <Col lg={4}>
                             <Button onClick={() => this.openCreatePlaceForm()} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Crear Lugar de Interés</Button>
                             {this.state.places?.map(elm => <AdminPlacelist key={elm._id}{...elm} openEditPlace={(_id) => this.openEditPlace(_id)} deletePlace={() => this.deletePlace(elm._id)} />)}
-                        </Col >
+                        </Col>
                         <Col lg={4}>
                             <Button onClick={() => this.openCreateRestaurantForm()} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Crear Restaurante</Button>
                             {this.state.restaurants?.map(elm => <AdminRestaurantlist key={elm._id}{...elm} openEditRestaurant={(_id) => this.openEditRestaurant(_id)} deleteRestaurant={() => this.deleteRestaurant(elm._id)} />)}
-                        </Col >
+                        </Col>
                     </Row>
                     <Modal show={this.state.showModal} onHide={() => this.setState({ showModal: false })}>
                         <Modal.Body>

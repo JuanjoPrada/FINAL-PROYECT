@@ -1,0 +1,15 @@
+.container-fluid .row{
+    display: flex;
+    justify-content: flex-start;
+}
+
+footer{
+    background-color: black;
+    color: white;
+    padding-top: 20px;
+    position: fixed;
+    margin-top: 30px;
+}
+
+
+

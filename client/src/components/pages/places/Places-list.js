@@ -2,6 +2,7 @@ import { Component } from 'react'
 import PlacesService from './../../../service/places.service'
 import PlacesCard from './Places-card'
 import { Row, Modal, Spinner } from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 
 class PlacesList extends Component {
 
@@ -29,8 +30,10 @@ class PlacesList extends Component {
 
   render() {
     const { places } = this.state
-
+    
     return !places ? (
+        <>
+        <Link className="btn btn-outline-light" to={`/:city/categorias`}> ← Volver</Link>
       <Modal
         show={this.state.showModal}
         onHide={() => this.setState({ showModal: false })}
@@ -39,7 +42,9 @@ class PlacesList extends Component {
           <Spinner animation="border" className="spinner" />
         </Modal.Body>
       </Modal>
-    ) : (
+      </>
+    )
+      : (
       <Row>
         {places.map((elm) => (
           <PlacesCard key={elm._id} {...elm} />

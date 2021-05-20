@@ -2,6 +2,7 @@ import { Component } from "react";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import RestaurantsService from "../../../service/restaurants.service";
 import PlacesService from "../../../service/places.service";
+import './Map.css'
 
 class MapContainer extends Component {
   constructor() {
@@ -23,10 +24,12 @@ class MapContainer extends Component {
   loadPlace() {
     const placeID = this.props.match.params.place_id;
 
-    this.placeService.getOnePlace(placeID).then(async (response) => {
-      await this.setState({ place: response.data });
-      this.handlePlaceMark();
-    });
+    this.placeService
+      .getOnePlace(placeID)
+      .then(async (response) => {
+        await this.setState({ place: response.data });
+        this.handlePlaceMark();
+      });
   }
 
   loadRestaurant() {
@@ -73,27 +76,33 @@ class MapContainer extends Component {
   };
 
   render() {
-    
-    // const longitude = this.state.myMarkers[0].longitude
-    // const latitude = this.state.myMarkers[0].latitude
-    
+
+    const longitude = this.state.myMarkers[0].longitude
+    const latitude = this.state.myMarkers[0].latitude
+
     return (
-      <div
-        style={{
-          position: "flex",
-          width: "100%",
-          height: "20%",
-        }}
-        className="map"
-      >
-        <Map
+      <div style={{
+        display: "flex",
+        justifyContent: "center",
+        height: "300px",
+        margin: "0 auto",
+      }}>
+        {longitude &&
+          <Map
+          style={{
+            width: "80%",
+            height: "300px",
+            margin: "0 auto",
+            borderRadius: "10px"
+          }}
+            className="map"
           google={this.props.google}
-          zoom={7.5}
-          initialCenter={{ lat: 41.353504945942596, lng: -1.6445428618200941 }}
+          zoom={12}
+          initialCenter={{ lat: latitude, lng: longitude }}
           disableDefaultUI={true}
         >
           {this.displayMarkers()}
-        </Map>
+            </Map>}
       </div>
     );
   }

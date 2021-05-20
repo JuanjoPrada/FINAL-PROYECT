@@ -9,6 +9,7 @@ import PlacesDetails from '../pages/placesDetails/PlacesDetails'
 import Places from '../pages/places/Places'
 import AdminPanel from '../pages/admin/AdminPanel'
 import Events from '../pages/events-view/Events'
+import ContactPage from '../pages/contact/ContactPage'
 import CityList from '../pages/cities/CityList'
 import Categories from '../pages/categories/Categories'
 
@@ -19,6 +20,7 @@ const Routes = ({ storeUser, loggedUser, handleAlert, adminUser }) => {
             <Route path="/" exact render={() => <IndexPage />} />
             <Route path="/ciudades" exact render={props => <CityList {...props} />} />
             <Route path="/:city/categorias" exact render={props => <Categories {...props} />} />
+            <Route path="/contacto" exact render={() => <ContactPage />} />
             <Route path="/:city/lugares-de-interes" exact render={props => <Places {...props} />} />
             <Route path="/:city/lugares-de-interes/detalles/:place_id" render={props => <PlacesDetails {...props} />} />
             <Route path="/:city/restaurantes" exact render={props => <Restaurants {...props} />} />
@@ -26,14 +28,13 @@ const Routes = ({ storeUser, loggedUser, handleAlert, adminUser }) => {
             <Route path="/registro" render={props => <Signup history={props.history} handleAlert={handleAlert} />} />
             <Route path="/inicio-sesion" render={props => <Login storeUser={storeUser} history={props.history} handleAlert={handleAlert} />} />
             <Route path="/perfil" render={() => loggedUser ? <Profile loggedUser={loggedUser} /> : <Redirect to="/inicio-sesion" />} />
-            <Route path="/admin" render={props => loggedUser.role === "ADMIN" ? <AdminPanel {...props} adminUser={adminUser} /> : <Redirect to="/inicio-sesion" />} />
             <Route path="/:city/eventos" exact render={props => <Events {...props} />} />
             <Redirect to="/404" />
+            <Route path="/contacto" exact render={() => <ContactPage/>} />
+            <Route path="/admin" render={props => loggedUser.role === "ADMIN" ? <AdminPanel {...props} adminUser={adminUser} /> : <Redirect to="/inicio-sesion" />} />
 
         </Switch>
     )
 }
 
 export default Routes
-
-/* <Route path="/admin" render={() => loggedUser ? <AdminPanel loggedUser={loggedUser} /> : <Redirect to="/inicio-sesion" />} /> */

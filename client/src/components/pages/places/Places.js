@@ -4,6 +4,7 @@ import './Places.css'
 
 const Places = (props) => {
     return (
+        
         <Container className="places-page">
             <PlacesList {...props}/>
         </Container>
