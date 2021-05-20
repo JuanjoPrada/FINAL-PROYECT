@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import logo from "./../navigation/logo.png";
 import "./Navigation.css";
 import AuthService from "../../../service/auth.service";
+const authService = new AuthService();
 
 const Navigation = ({ loggedUser, storeUser, handleAlert }) => {
   const logout = () => {
-    const authService = new AuthService();
 
     authService
       .logout()

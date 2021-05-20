@@ -4,8 +4,9 @@ class RestaurantsService {
 
     constructor() {
         this.app = axios.create({
-            baseURL: 'http://localhost:5000/api/restaurants',
-        })
+          baseURL: "http://localhost:5000/api/restaurants",
+          withCredentials: true,
+        });
     }
 
     getAllRestaurants = () => this.app.get('/getAllRestaurants/')

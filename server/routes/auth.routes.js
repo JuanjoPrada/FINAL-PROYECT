@@ -52,20 +52,18 @@ router.post('/login', (req, res) => {
             req.session.currentUser = user
             res.json(req.session.currentUser)
         })
-        .catch(err => {
-            console.log('-------------')
-            res.status(500).json({ code: 500, message: 'Usuario no encontrado', err })})
+        .catch(err => res.status(500).json({ code: 500, message: 'Usuario no encontrado', err }))
 })
 
 //LogOut
 router.get('/logout', (req, res) => {
-
-    req.session.destroy((err) => res.json({ message: 'Logout successful' }));
+    
+    req.session.destroy(() => res.json({ message: 'Logout successful' }));
 })
 
 //Check User's Status
 router.post('/isLoggedin', (req, res) => {
-
+    console.log(req.session.currentUser, "SESION en loggedIn")
     req.session.currentUser ? res.json(req.session.currentUser) : res.status(401).json({ code: 401, message: 'Unauthorized' })
 })
 
