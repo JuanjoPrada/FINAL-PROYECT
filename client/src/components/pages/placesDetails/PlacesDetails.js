@@ -36,7 +36,7 @@ class PlacesDetails extends Component {
         <Spinner animation="border" className="spinner" />
       ) : (
         <>
-          <Link className="btn btn-outline-light" to={`/${place.city}/restaurantes`}>Volver</Link>
+              <Link className="btn btn-outline-light back-button" to={`/${place.city}/lugares-de-interes`}>◁</Link>
           <Container>
             <Row className="justify-content-between details">
               <img

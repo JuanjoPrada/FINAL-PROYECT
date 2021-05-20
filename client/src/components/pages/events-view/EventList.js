@@ -23,7 +23,7 @@ console.log(loggedUser.favouriteEvents, id, "salgo mil veces")
                 Mas Info
               </a>
             </Card.Text>
-            <Card.Text>
+            <Card.Text className="star">
               <FavButton
                 added={loggedUser.favouriteEvents.includes(id)}
                 palabra={"events"}

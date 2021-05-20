@@ -36,9 +36,10 @@ class Profile extends Component {
   render() {
     return (
       <>
-        <h1>Perfilaco</h1>
         <Container className="profile-page">
+          <div className="profile-card">
           <ProfileCard {...this.props.loggedUser} />
+          </div>
           <hr />
           <ShowFavourites {...this.state} />
         </Container>

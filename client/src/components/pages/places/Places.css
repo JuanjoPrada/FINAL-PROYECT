@@ -1,11 +1,17 @@
 .places-page .places-card  {
     margin-bottom: 40px;
+     padding: 0;
+
 }
 
 .places-page .places-card img {
     height: 180px;
     object-fit: cover;
+
 }
 .places-page {
     padding-top: 50px;
+}
+.places-card {
+    color: #fff;
 }

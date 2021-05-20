@@ -1,23 +1,25 @@
 import { Container, Row, Col } from 'react-bootstrap'
 import SignupForm from './SignupForm'
+import './../login/Login.css'
 
 const Signup = ({ history, handleAlert }) => {
 
     return (
+        <div className='login'>
+            <Container>
 
-        <Container>
+                <Row className="justify-content-center">
 
-            <Row className="justify-content-center">
+                    <Col md={6}>
 
-                <Col md={6}>
+                        <SignupForm history={history} handleAlert={handleAlert} />
 
-                    <SignupForm history={history} handleAlert={handleAlert} />
+                    </Col>
 
-                </Col>
+                </Row>
 
-            </Row>
-
-        </Container>
+            </Container>
+        </div>
 
     )
 }

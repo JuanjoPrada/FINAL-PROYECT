@@ -17,22 +17,22 @@ class FavButton extends Component {
 
 
   onClick() {
-      
-      let favService;
-      switch (this.props.palabra) {
-          case "places":
+
+    let favService;
+    switch (this.props.palabra) {
+      case "places":
         favService = this.profileService.favPlaces(this.props.id);
         break;
       case "restaurants":
-          favService = this.profileService.favRestaurants(this.props.id);
+        favService = this.profileService.favRestaurants(this.props.id);
         break;
-        case "events":
+      case "events":
         favService = this.profileService.favEvents(this.props.id);
         break;
-        
+
     }
     favService
-    .then(() => {
+      .then(() => {
         this.props.fetchUser();
         this.props.handleAlert("Gestionado en tus Favoritos");
         this.setState({ added: !this.state.added });

@@ -9,6 +9,12 @@
 
 .events-container{
     padding: 50px 0;
+    color:#fff;
+}
+.events-container h6 {
+    padding: 50px 0;
+    color:#fff;
+    font-size: 5em;
 }
 
 .events{

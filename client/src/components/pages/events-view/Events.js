@@ -54,7 +54,7 @@ class Events extends Component {
         </Link>
         <Container className="events-container">
           <Widget />
-          <h1>Proximos Eventos en {city}</h1>
+            <h6>Proximos Eventos en {city} </h6>
           <hr />
           <Row>
             {events.map((elm) => (

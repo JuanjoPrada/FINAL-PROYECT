@@ -46,7 +46,7 @@ class RestaurantDetails extends Component {
           </Modal>
         ) : (
           <>
-            <Link className="btn btn-outline-light" to={`/${restaurant.city}/restaurantes`}>Volver</Link>
+              <Link className="btn btn-outline-light back-button" to={`/${restaurant.city}/restaurantes`}>◁</Link>
             <Container>
               <Row className="justify-content-between details">
                 <img
