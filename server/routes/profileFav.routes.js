@@ -52,8 +52,8 @@ router.get("/getFavEvents", (req, res) => {
 
 //Get All Together
 router.get("/getFavs", isLoggedIn, (req, res) => {
+  
   const id = req.session.currentUser._id;
-  console.log("-------------------EL ID ALLTOGETHER", id);
 
   User.findById(id)
     .populate("favouriteRestaurants favouritePlaces")
