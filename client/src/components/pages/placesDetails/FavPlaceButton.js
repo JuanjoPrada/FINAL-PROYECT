@@ -3,23 +3,40 @@ import ProfileService from "../../../service/profile.service"
 
 const profileService = new ProfileService()
 
-const FavPlaceButton = (palabra, id) => {
-  //button onclick http://localhost:5000/api/profile//favPlaces/609db1bee5d0344fbd2b4fff
-
-  const field = 'favourite' + {palabra}
-
-  getStatus = (id) => {
+const FavButton = ( palabra, id) => {
+  
+  const onClick = () => {
+    
+    if(palabra === 'places'){
+    
       profileService
-      .getFavs()
-      .then((response) => response.data.favourite
-  }
+      .favPlaces(id)
+      .then(() => console.log(id)
+      .catch((err) => console.log("ERROR AL GESTIONAR FAVORITOS", err))
+    } else if(palabra === 'restaurant')
+      
+      
+      profileService
+      .favRestaurants(id)
+      .then(() => console.log(id)
+      .catch((err) => console.log("ERROR AL GESTIONAR FAVORITOS", err))
+      
+      profileService
+      .favEvents(id)
+      .then(() => console.log(id)
+      .catch((err) => console.log("ERROR AL GESTIONAR FAVORITOS", err))
 
-  profileService.favPlaces(id);
+    }
+    
+  
+
+  
+  
   return (
     
-      <Link to={`/${city}/lugares-de-interes/detalles/${_id}`}>
+    <Button onClick={onClick} to={`/${city}/lugares-de-interes/detalles/${_id}`}>Añadir fav</Button>
        
   );
 };
 
-export default FavouriteEventsCard;
+export default FavButton;

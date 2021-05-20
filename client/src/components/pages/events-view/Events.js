@@ -10,6 +10,7 @@ class Events extends Component {
     this.state = {
       events: undefined,
     };
+    
     this.tmasterApp = new TmasterApp();
   }
 
@@ -18,22 +19,22 @@ class Events extends Component {
   }
 
   getAllEvents() {
+
     const { city } = this.props.match.params;
 
     this.tmasterApp
       .searchAll(city)
-      .then((response) => {
-        this.setState({ events: response.data._embedded.events });
-        console.log("----------AQUI-------", this.state.events);
-      })
+      .then((response) => this.setState({ events: response.data._embedded.events }))
       .catch((err) => console.log("ERROR AL CARGAR LOS EVENTOS", err));
   }
 
   render() {
+
     const { city } = this.props.match.params;
     const { events } = this.state;
 
     return !events ? (
+
       <Modal
         show={this.state.showModal}
         onHide={() => this.setState({ showModal: false })}

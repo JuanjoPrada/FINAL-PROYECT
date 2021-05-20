@@ -40,7 +40,7 @@ router.get("/getFavEvents", (req, res) => {
   const id = req.session.currentUser;
 
   User.findOne(id)
-    .select("favouriteEevents")
+    .select("favouriteEvents")
     .populate("favouriteEvents")
     .then((result) => res.json(result))
     .catch((err) =>
@@ -56,7 +56,7 @@ router.get("/getFavs", isLoggedIn, (req, res) => {
   console.log("-------------------EL ID ALLTOGETHER", id);
 
   User.findById(id)
-    .populate("favouriteRestaurants favouritePlaces favouriteEvents")
+    .populate("favouriteRestaurants favouritePlaces")
     .then((result) => res.json(result))
     .catch((err) =>
       res
@@ -66,34 +66,37 @@ router.get("/getFavs", isLoggedIn, (req, res) => {
 });
 
 // //Manage favorites events
-// router.post("/favPlaces/:id", (req, res) => {
+router.post("/favEvents/:id", isLoggedIn, (req, res) => {
+  const { id } = req.params;
+  const currentUser = req.session.currentUser._id;
 
-//   const { id } = req.params;
-//   const  currentUser  = req.session.currentUser;
+  User.findById(currentUser).then((response) => {
+    const updateObj = response.favouriteEvents.includes(id)
+      ? { $pull: { favouriteEvents: id } }
+      : { $push: { favouriteEvents: id } };
 
-//   User.findById(currentUser)
-//     //.then(() => res.redirect(`/user/details/${id}`))
-//     .catch((err) => console.log("Error!", err));
-// });
+    return User.findByIdAndUpdate(currentUser, updateObj)
+      .then(() =>
+        res.status(200).json({ code: 200, message: "Gestionado en favoritos :)" }))
+      .catch((err) => console.log("Error!", err));
+  });
+});
 
 //Manage favorites restaurants
 router.post("/favRestaurants/:id", isLoggedIn, (req, res) => {
+
   const { id } = req.params;
-  console.log("----------------EL ID", id);
   const currentUser = req.session.currentUser._id;
-  console.log("--------------EL USER ID", currentUser);
 
   User.findById(currentUser).then((response) => {
-    console.log(response.favouriteRestaurants.includes(id));
+    
     const updateObj = response.favouriteRestaurants.includes(id)
       ? { $pull: { favouriteRestaurants: id } }
       : { $push: { favouriteRestaurants: id } };
 
     return User.findByIdAndUpdate(currentUser, updateObj)
-      .then(() =>
-        res.status(200).json({ code: 200, message: "Gestionado en favoritos :)" })
-      )
-      .catch((err) => console.log("Error!", err));
+              .then(() =>res.status(200).json({ code: 200, message: "Gestionado en favoritos :)" }))
+            .catch((err) => console.log("Error!", err));
   });
 });
 
@@ -110,9 +113,7 @@ router.post("/favPlaces/:id", isLoggedIn, (req, res) => {
       : { $push: { favouritePlaces: id } };
 
     return User.findByIdAndUpdate(currentUser, updateObj)
-      .then(() =>
-        res.status(200).json({ code: 200, message: "Gestionado en favoritos :)" })
-      )
+      .then(() => res.status(200).json({ code: 200, message: "Gestionado en favoritos :)" }))
       .catch((err) => console.log("Error!", err));
   });
 });

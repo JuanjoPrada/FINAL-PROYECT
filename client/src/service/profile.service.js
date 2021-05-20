@@ -11,6 +11,7 @@ class ProfileService {
   getFavs = () => this.app.get("/getFavs");
   favPlaces = (id) => this.app.post(`/favPlaces/${id}`);
   favRestaurants = (id) => this.app.post(`/favRestaurants/${id}`);
+  favEvents = (id) => this.app.post(`/favEvents/${id}`);
 }
 
 export default ProfileService;

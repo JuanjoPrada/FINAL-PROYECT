@@ -39,7 +39,7 @@ const userSchema = new Schema(
         ref: "Restaurant",
       },
     ],
-    favouriteEvents: [String],
+    favouriteEvents: [String]
   },
   {
     timestamps: true,
