@@ -8,8 +8,9 @@ const Footer = () =>
             <div className="col-md-6 mt-md-0 mt-3">
                 <h5 className="text-uppercase">OH MY PLAN!</h5>
                 <p>
-                Mejora la forma en la que hacer planes, con OH MY PLAN!. ¿Quieres descubrir los últimos eventos y experiencias restaurantes y lugares en tu ciudad? ¡Explora OH MY PLAN!
+                Mejora la forma en la que hacer planes, con OH MY PLAN!. 
                 </p>
+                 <p>¿Quieres descubrir los últimos eventos y experiencias restaurantes y lugares en tu ciudad? ¡Explora OH MY PLAN!</p>
             </div>
 
             <hr className="hr clearfix w-100 d-md-none pb-0" />

@@ -3,7 +3,9 @@ import RestaurantsService from '../../../service/restaurants.service'
 import { Link } from 'react-router-dom'
 import { Container, Row, Col, Modal, Spinner } from 'react-bootstrap'
 import MapContainer from "../../shared/map/Map";
-import './Restaurant-details.css'
+import './RestaurantDetails.css'
+import logo from './../index/place-logo.png'
+
 
 class RestaurantDetails extends Component {
 
@@ -43,36 +45,40 @@ class RestaurantDetails extends Component {
             </Modal.Body>
           </Modal>
         ) : (
-            <>
-            <Link className="btn btn-outline-light back-button" to={`/${restaurant.city}/restaurantes`}>◁</Link>
-            <Container className="details-container">
-              <Row className="justify-content-between">
-                <Col md={4}>
-                  <img src={restaurant.image} alt={restaurant.name} style={{ width: "100%" }}
-                  />
+          <>
+            <Link className="btn btn-outline-light" to={`/${restaurant.city}/restaurantes`}>Volver</Link>
+            <Container>
+              <Row className="justify-content-between details">
+                <img
+                  src={restaurant.image}
+                  alt={restaurant.name}
+                  style={{ width: "100%" }}
+                />
+              </Row>
+              <Row className="justify-content-between details">
+                <Col lg={8}>
+                  <h3>{restaurant.name}</h3>
                 </Col>
-                <Col md={6}>
-                  <h1>{restaurant.name}</h1>
-                  <hr />
-                  <h3>Información</h3>
-                  <p>{restaurant.description}</p>
-                  <hr />
-                  <h3>Especificaciones</h3>
+
+                <Col lg={4}>
                   <p>
-                    <strong>Dirección:</strong> {restaurant.address}
+                    <img alt='place-logo' src={logo}></img>
+                    {restaurant.address}
                   </p>
                   <p>
-                    <strong>Tipo de Comida:</strong> {restaurant.foodType}
+                    {restaurant.foodType}
                   </p>
-                  <hr />
                 </Col>
               </Row>
               <br></br>
+              <Row className="justify-content-between details">
+                <p>{restaurant.description}</p>
+              </Row>
               <Row >
                 <MapContainer {...this.props} />
               </Row>
             </Container>
-        </>
+          </>
         )}
       </>
     );

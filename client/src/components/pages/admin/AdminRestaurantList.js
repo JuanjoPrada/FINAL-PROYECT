@@ -5,8 +5,8 @@ const AdminRestaurantlist = ({ name, _id, city, deleteRestaurant, openEditRestau
         <>
             <ListGroup>
                 <ListGroup.Item variant="warning">{name} | {city} 
-                    <Button onClick={() => openEditRestaurant(_id)} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Editar</Button>
-                    <Button onClick={() => deleteRestaurant(_id)}>Eliminar</Button></ListGroup.Item>
+                    <Button className='edit-btn' onClick={() => openEditRestaurant(_id)} variant="outline-secondary" size="sm" style={{ marginBottom: '20px' }}>Editar</Button>
+                    <Button onClick={() => deleteRestaurant(_id)} variant="outline-danger" >Eliminar</Button></ListGroup.Item>
             </ListGroup>
         </>
     )

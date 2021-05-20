@@ -101,7 +101,7 @@ class MapContainer extends Component {
           initialCenter={{ lat: latitude, lng: longitude }}
           disableDefaultUI={true}
           >
-          {this.displayMarkers()}
+            {this.displayMarkers()}
           </Map>}
       </div>
     );
