@@ -1,12 +1,17 @@
 import { Link } from 'react-router-dom'
+import './CityList.css'
 
 const CityList = () => {
     return (
         <>
-            <h1>Listado de Ciudades</h1>
-            <Link to={'/madrid/categorias'} >Madrid</Link>
-            <hr></hr>
-            <Link to={'/barcelona/categorias'} >Barcelona</Link>
+            <div className='city-container city-container-mad'>
+                <Link className='city-title2' to={'/madrid/categorias'} > <p>Madrid</p>
+                </Link>
+            </div>
+            <div className='city-container city-container-bcn'>
+                <Link className='city-title2' to={'/barcelona/categorias'} ><p>Barcelona</p>
+                </Link>
+            </div>
         </>
     )
 }

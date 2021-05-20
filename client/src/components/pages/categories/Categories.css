@@ -1,0 +1,47 @@
+.categories-container {
+    height: 50vh;
+    text-align: center;
+}
+.categories-container-rest {
+    background-image: url(./rest.jpg);
+    background-position-y: 60%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-filter: contrast(200%);
+    filter: contrast(100%);
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #fff;
+}
+.categories-container-event {
+    background-image: url(./concert.jpeg);
+    background-position-y: 65%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-filter: contrast(200%);
+    filter: contrast(100%);
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #fff;
+}
+.categories-container-place {
+    background-image: url(./place.jpg);
+    background-position-y: 60%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-filter: contrast(400%);
+    filter: contrast(100%);
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #fff;
+}
+.categories-container p {
+    color: #fff;
+    position: absolute;
+    top: 35%;
+    left: 0;
+    right: 0;
+    font-size: 6em;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding-bottom: 8%;
+    padding: 5px 10px;
+    text-shadow: 2px 2px 8px #fff;
+}
