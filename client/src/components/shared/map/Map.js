@@ -97,7 +97,7 @@ class MapContainer extends Component {
             borderRadius: "10px",
           }}
           google={this.props.google}
-          zoom={12}
+          zoom={15}
           initialCenter={{ lat: latitude, lng: longitude }}
           disableDefaultUI={true}
           >

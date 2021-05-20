@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import RestaurantsService from './../../../service/restaurants.service'
 import RestaurantCard from './Restaurant-card'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Row, Modal, Spinner, Container } from 'react-bootstrap'
 
 class RestaurantsList extends Component {
@@ -30,7 +30,7 @@ class RestaurantsList extends Component {
   render() {
     const { restaurants } = this.state
     const { city } = this.props.match.params;
-    
+
     return !restaurants ? (
       <Modal
         show={this.state.showModal}
@@ -41,14 +41,16 @@ class RestaurantsList extends Component {
         </Modal.Body>
       </Modal>
     ) : (
-      <Container>
-        <Link className="btn btn-outline-light" to={`/${city}/categorias`}> ← Volver</Link>
-        <Row>
-          {restaurants.map((elm) => (
-            <RestaurantCard key={elm._id} {...elm} />
-        ))}
+      <>
+        <Link className="btn btn-outline-light back-button" to={`/${city}/categorias`}>◁</Link>
+        <Container>
+          <Row>
+            {restaurants.map((elm) => (
+              <RestaurantCard key={elm._id} {...elm} />
+            ))}
           </Row>
         </Container>
+      </>
     );
 
   }

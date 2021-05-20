@@ -7,5 +7,17 @@ a{
 main {
     font-family: 'Poppins';
     background-color: #293133;
+}
 
+.back-button{
+    position: fixed;
+    z-index: 20;
+    border: 3px solid;
+    border-radius: 100px;
+    margin: 20px;
+    font-size: 1.2em;
+}
+
+body{
+    color: white;
 }

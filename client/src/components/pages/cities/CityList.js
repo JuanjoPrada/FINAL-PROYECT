@@ -4,7 +4,7 @@ import './CityList.css'
 const CityList = () => {
     return (
         <>
-            <Link className="btn btn-outline-light" to={`/`}> ← Volver</Link>
+            <Link className="btn btn-outline-light back-button" to={`/`}>◁</Link>
             <div className='city-container city-container-mad'>
                 <Link className='city-title2' to={'/madrid/categorias'} > <p>Madrid</p>
                 </Link>

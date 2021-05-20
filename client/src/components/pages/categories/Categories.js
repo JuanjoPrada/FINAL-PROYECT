@@ -5,7 +5,7 @@ const Categories = (props) => {
     const { city } = props.match.params
     return (
         <>
-            <Link className="btn btn-outline-light" to={'/ciudades'}> ← Volver</Link>
+            <Link className="btn btn-outline-light back-button" to={'/ciudades'}>◁</Link>
             <div className='categories-container categories-container-event'>
                 <Link to={`/${city}/eventos`} ><p>Eventos</p></Link>
             </div>

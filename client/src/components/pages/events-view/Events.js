@@ -12,7 +12,7 @@ class Events extends Component {
     this.state = {
       events: undefined,
     };
-    
+
     this.tmasterApp = new TmasterApp();
   }
 
@@ -36,7 +36,6 @@ class Events extends Component {
     const { events } = this.state;
 
     return !events ? (
-
       <Modal
         show={this.state.showModal}
         onHide={() => this.setState({ showModal: false })}
@@ -46,17 +45,19 @@ class Events extends Component {
         </Modal.Body>
       </Modal>
     ) : (
-        <Container>
-        <Link className="btn btn-outline-light" to={`/${city}/categorias`}> ← Volver</Link>
-        <Widget />
-        <h1>Proximos Eventos en {city}</h1>
-        <hr />
-        <Row>
-          {events.map((elm) => (
-            <EventList key={elm.id} {...elm} />
-          ))}
-        </Row>
-      </Container>
+      <>
+        <Link className="btn btn-outline-light back-button" to={`/${city}/categorias`}>◁</Link>
+        <Container className="events-container">
+          <Widget />
+          <h1>Proximos Eventos en {city}</h1>
+          <hr />
+          <Row>
+            {events.map((elm) => (
+              <EventList key={elm.id} {...elm} />
+            ))}
+          </Row>
+        </Container>
+      </>
     );
   }
 }

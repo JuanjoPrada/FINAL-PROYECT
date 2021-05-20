@@ -1,9 +1,9 @@
 .contact-container {
-    height: 50vh;
     text-align: center;
 }
 
 .contact-header {
+    
     background-image: url(./contacto.jpeg);
     background-position-y: 30%;
     background-size: cover;
@@ -14,4 +14,23 @@
     border-top: 1px solid #fff;
     color: #fff;
     height: 60vh;
+    text-shadow: 2px 2px 8px #fff;
+}
+
+h1{
+    font-size: 5em;
+    margin: 30px auto 20px;
+    text-shadow: 2px 2px 8px #fff;
+}
+
+h4{
+    font-size: 1.5em;
+}
+
+p{
+    font-size: 0.9em;
+}
+
+Col{
+    padding-bottom: 20px;
 }
