@@ -3,6 +3,7 @@ import TmasterApp from "../../../service/api-handler";
 import { Container, Row, Modal, Spinner } from "react-bootstrap";
 import EventList from "./EventList";
 import Widget from "./widget";
+import { Link } from 'react-router-dom'
 
 class Events extends Component {
   constructor() {
@@ -48,7 +49,11 @@ class Events extends Component {
         </Modal.Body>
       </Modal>
     ) : (
-      <Container>
+        <Container>
+          <br></br>
+          <Link className="btn btn-outline-light" to={`/madrid/categorias`}> ← Volver</Link>
+          <br></br>
+          <br></br>
         <Widget />
         <div
           w-type="event-discovery"

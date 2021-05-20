@@ -42,7 +42,7 @@ const Navigation = ({ loggedUser, storeUser, handleAlert }) => {
             <Link to="/inicio-sesion" className="nav-link">
               Iniciar sesión
             </Link>
-            <Link to="/inicio-sesion" className="nav-link">
+            <Link to="/contacto" className="nav-link">
               Contacto
             </Link>
           </>

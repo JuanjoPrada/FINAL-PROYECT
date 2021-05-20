@@ -12,6 +12,8 @@ import EditPlace from '../pages/editPlace/EditPlace'
 import EditRestaurant from '../pages/editRestaurant/EditRestaurant'
 import AdminPanel from '../pages/admin/AdminPanel'
 import Events from '../pages/events-view/Events'
+import ContactPage from '../pages/contact/ContactPage'
+
 
 const Routes = ({ storeUser, loggedUser, handleAlert }) => {
     
@@ -30,7 +32,8 @@ const Routes = ({ storeUser, loggedUser, handleAlert }) => {
             <Route path="/inicio-sesion" render={props => <Login storeUser={storeUser} history={props.history} handleAlert={handleAlert} />} />
             <Route path="/perfil" render={() => loggedUser ? <Profile loggedUser={loggedUser} /> : <Redirect to="/inicio-sesion" />} />
             <Route path="/admin" exact render={props => <AdminPanel {...props} />} />
-            <Route path="/:city/eventos" exact render={(props) => <Events {...props}/>} />
+            <Route path="/:city/eventos" exact render={(props) => <Events {...props} />} />
+            <Route path="/contacto" exact render={() => <ContactPage/>} />
         </Switch>
     )
 }

@@ -1,8 +1,8 @@
 import { Component } from 'react'
 import RestaurantsService from './../../../service/restaurants.service'
 import RestaurantCard from './Restaurant-card'
-
-import { Row, Button, Modal } from 'react-bootstrap'
+import {Link} from 'react-router-dom'
+import { Row, Modal } from 'react-bootstrap'
 import NewRestaurant from '../newRestaurant/NewRestaurant'
 
 
@@ -37,9 +37,10 @@ class RestaurantsList extends Component {
 
     return (
       <>
-        <Button onClick={() => this.setState({ showModal: true })} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Crear Restaurante</Button>
-
-
+        <br></br>
+        <Link className="btn btn-outline-light" to={`/:city/categorias`}> ← Volver</Link>
+        <br></br>
+        <br></br>
         {!restaurants
           ?
           <h1>CARGANDO</h1>
@@ -50,7 +51,7 @@ class RestaurantsList extends Component {
         <Modal show={this.state.showModal} onHide={() => this.setState({ showModal: false })}>
           <Modal.Header> <Modal.Title>Complete el formulario</Modal.Title> </Modal.Header>
           <Modal.Body>
-            <NewRestaurant closeModal={() => this.setState({ showModal: false })} refreshCoasters={() => this.loadCoasters()} />
+            <NewRestaurant closeModal={() => this.setState({ showModal: false })} refreshRestaurant={() => this.loadRestaurant()} />
           </Modal.Body>
         </Modal>
 

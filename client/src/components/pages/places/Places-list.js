@@ -2,6 +2,7 @@ import { Component } from 'react'
 import PlacesService from './../../../service/places.service'
 import PlacesCard from './Places-card'
 import { Row, Modal, Spinner } from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 
 class PlacesList extends Component {
 
@@ -24,13 +25,17 @@ class PlacesList extends Component {
     }
 
     render() {
-        const { places } = this.state
-
-        return !places ? (
+      const { places } = this.state
+      
+      return !places ? (
           <Modal
             show={this.state.showModal}
             onHide={() => this.setState({ showModal: false })}
-          >
+        >
+          <br></br>
+          <Link className="btn btn-outline-light" to={`/:city/categorias`}> ← Volver</Link>
+          <br></br>
+          <br></br>
             <Modal.Body>
               <Spinner animation="border" className="spinner" />
             </Modal.Body>

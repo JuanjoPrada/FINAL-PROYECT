@@ -6,6 +6,7 @@ import Routes from "./routes/Routes";
 import Alert from "./shared/alert/Alert";
 import Navigation from "./layout/navigation/Navigation";
 import { Modal, Spinner } from "react-bootstrap";
+import Footer from "./layout/footer/Footer";
 
 class App extends Component {
 
@@ -69,6 +70,8 @@ class App extends Component {
           }
 
         </main>
+
+        <Footer/>
 
         <Alert
           handleAlert={(alertText, showAlert) =>

@@ -1,7 +1,9 @@
 import { Component } from 'react'
 import { Container, Spinner, Row, Col } from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 import PlacesService from '../../../service/places.service'
 import MapContainer from './../../shared/map/Map'
+import './PlacesDetails.css'
 
 class PlacesDetails extends Component {
     constructor() {
@@ -12,15 +14,18 @@ class PlacesDetails extends Component {
         this.placesService = new PlacesService()
     }
     componentDidMount() {
-
-        const { place_id } = this.props.match.params
-
-        this.placesService
-            .getOnePlace(place_id)
-            .then(response => this.setState({ place: response.data }))
-            .catch(err => console.log(err))
-
+      this.loadPlace()
     }
+  
+  loadPlace() {
+    const { place_id } = this.props.match.params;
+
+    this.placesService
+      .getOnePlace(place_id)
+      .then((response) => this.setState({ place: response.data }))
+      .catch((err) => console.log(err));
+    }
+  
     render() {
         const { place } = this.state
 
@@ -29,7 +34,11 @@ class PlacesDetails extends Component {
             {!this.state.place ? (
               <Spinner animation="border" className="spinner" />
             ) : (
-              <>
+                <>
+                  <br></br>
+                  <Link className="btn btn-outline-light" to={`/${place.city}/restaurantes`}>Volver</Link>
+                  <br></br>
+                  <br></br>
                 <Row className="justify-content-between">
                   <Col lg={4}>
                     <img
@@ -45,12 +54,12 @@ class PlacesDetails extends Component {
                     <p>{place.url}</p>
                     <p>
                       {place.address} {place.city}
-                    </p>
+                      </p>
                   </Col>
                 </Row>
                 <br></br>
-                <Row>
-                  <MapContainer {...this.props} />
+                  <Row>
+                    <MapContainer {...this.props} />
                 </Row>
               </>
             )}

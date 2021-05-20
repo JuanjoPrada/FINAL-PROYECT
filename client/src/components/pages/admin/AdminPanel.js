@@ -72,7 +72,7 @@ class AdminPanel extends Component {
                             {this.state.restaurants?.map(elm => <AdminRestaurantlist key={elm._id}{...elm} deleteRestaurant={() => this.deleteRestaurant(elm._id)} />)}
                         </Col >
                     </Row>
-                  
+
                 </Container>
         )
     }
