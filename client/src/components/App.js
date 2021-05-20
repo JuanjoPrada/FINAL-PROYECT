@@ -18,7 +18,7 @@ class App extends Component {
       alertText: "",
       showModal: true
     }
-    
+
     this.authService = new AuthServices()
   }
 
@@ -48,17 +48,17 @@ class App extends Component {
         <Navigation
           loggedUser={this.state.loggedUser}
           storeUser={(user) => this.storeUser(user)}
-          handleAlert={(alertText) => this.handleAlert(alertText)}/>
+          handleAlert={(alertText) => this.handleAlert(alertText)} />
 
         <main>
 
-          {this.state.loggedUser !== null ? 
+          {this.state.loggedUser !== null ?
             <Routes
               storeUser={(user) => this.storeUser(user)}
               loggedUser={this.state.loggedUser}
               handleAlert={(alertText) => this.handleAlert(alertText)}
             />
-           : 
+            :
             <Modal
               show={this.state.showModal}
               onHide={() => this.setState({ showModal: false })}
@@ -78,8 +78,8 @@ class App extends Component {
             this.handleAlert(alertText, showAlert)
           }
           show={this.state.showAlert}
-          text={this.state.alertText}/>
-          
+          text={this.state.alertText} />
+
       </>
     );
   }

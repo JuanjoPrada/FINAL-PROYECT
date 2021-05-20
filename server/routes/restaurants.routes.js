@@ -56,7 +56,9 @@ router.post("/newRestaurant", (req, res) => {
 });
 
 router.put("/editRestaurant/:restaurant_id", (req, res) => {
-  const restaurant = req.body;
+ 
+  const restaurant = req.body
+
   Restaurant
     .findByIdAndUpdate(req.params.restaurant_id, restaurant, { new: true })
     .then((response) => res.json(response))
@@ -65,15 +67,13 @@ router.put("/editRestaurant/:restaurant_id", (req, res) => {
 });
 
 router.delete("/deleteRestaurant/:restaurant_id", (req, res) => {
+  
   Restaurant
     .findByIdAndDelete(req.params.restaurant_id)
     .then(() =>
       res.json({ code: 202, message: "Restaurant deleted successfully" })
     )
-    .catch((err) =>
-      res
-        .status(500)
-        .json({ code: 500, message: "Error editing restaurant", err })
+    .catch((err) =>res.status(500).json({ code: 500, message: "Error editing restaurant", err })
     );
 });
 

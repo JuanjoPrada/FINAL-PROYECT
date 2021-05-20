@@ -1,7 +1,7 @@
 import { Card, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const FavouriteCard = ({ image, name, cost, _id, city }) => {
+const FavouritePlacesCard = ({ image, name, cost, _id, city }) => {
 
   return (
     
@@ -19,4 +19,4 @@ const FavouriteCard = ({ image, name, cost, _id, city }) => {
   );
 };
 
-export default FavouriteCard;
+export default FavouritePlacesCard;

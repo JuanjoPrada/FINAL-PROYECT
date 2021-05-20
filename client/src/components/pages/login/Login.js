@@ -5,8 +5,8 @@ const Login = ({ storeUser, history, handleAlert }) => {
 
   return (
     
-    <Container>
-      <Row className="justify-content-center">
+    <Container className='login'>
+      <Row className="justify-content-center ">
         <Col md={6}>
           <LoginForm
             storeUser={storeUser}
