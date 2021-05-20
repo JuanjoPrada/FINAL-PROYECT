@@ -81,11 +81,12 @@ class MapContainer extends Component {
     const latitude = this.state.myMarkers[0].latitude
 
     return (
-      <div style={{
+      <div className="map-container" style={{
         display: "flex",
+        position: "relative",
         justifyContent: "center",
         height: "300px",
-        margin: "0 auto",
+        margin: "30px auto",
       }}>
         {longitude &&
           <Map
@@ -93,16 +94,15 @@ class MapContainer extends Component {
             width: "80%",
             height: "300px",
             margin: "0 auto",
-            borderRadius: "10px"
+            borderRadius: "10px",
           }}
-            className="map"
           google={this.props.google}
-          zoom={12}
+          zoom={15}
           initialCenter={{ lat: latitude, lng: longitude }}
           disableDefaultUI={true}
-        >
-          {this.displayMarkers()}
-            </Map>}
+          >
+            {this.displayMarkers()}
+          </Map>}
       </div>
     );
   }

@@ -1,0 +1,17 @@
+.card {
+    background-color: #293133;
+    background-image: linear-gradient(#293133, #3a4344);
+    border-radius: 5%;
+}
+
+.img-card {
+    height: 300px;
+    width: auto;
+    align-items: center;
+    object-fit: cover;
+}
+
+.restaurants-card {
+    padding: 0;
+    color: #fff;
+}

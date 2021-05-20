@@ -1,8 +1,8 @@
 import { Component } from 'react'
 import PlacesService from './../../../service/places.service'
 import PlacesCard from './Places-card'
-import { Row, Modal, Spinner } from 'react-bootstrap'
-import {Link} from 'react-router-dom'
+import { Row, Modal, Spinner, Container } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 class PlacesList extends Component {
 
@@ -30,27 +30,30 @@ class PlacesList extends Component {
 
   render() {
     const { places } = this.state
-    
+    const { city } = this.props.match.params;
+
     return !places ? (
-        <>
-        <Link className="btn btn-outline-light" to={`/:city/categorias`}> ← Volver</Link>
-      <Modal
-        show={this.state.showModal}
-        onHide={() => this.setState({ showModal: false })}
-      >
-        <Modal.Body>
-          <Spinner animation="border" className="spinner" />
-        </Modal.Body>
-      </Modal>
-      </>
+        <Modal
+          show={this.state.showModal}
+          onHide={() => this.setState({ showModal: false })}
+        >
+          <Modal.Body>
+            <Spinner animation="border" className="spinner" />
+          </Modal.Body>
+        </Modal>
     )
       : (
-      <Row>
-        {places.map((elm) => (
-          <PlacesCard key={elm._id} {...elm} />
-        ))}
-      </Row>
-    );
+        <>
+          <Link className="btn btn-outline-light back-button" to={`/${city}/categorias`}>◁</Link>
+          <Container>
+            <Row>
+              {places.map((elm) => (
+                <PlacesCard key={elm._id} {...elm} />
+              ))}
+            </Row>
+          </Container>
+        </>
+      );
   }
 }
 export default PlacesList

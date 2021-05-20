@@ -27,7 +27,7 @@ class FavouriteEventsCard extends Component {
   render() {
     return (
       <Col lg={4}>
-        <Card className="event-list">
+        <Card className="fav-card">
           <Card.Img variant="top" src={this.state.fav?.images[3].url} />
           <Card.Body>
             <Card.Title>{this.state.fav?.name}</Card.Title>

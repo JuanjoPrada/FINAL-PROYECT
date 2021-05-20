@@ -1,0 +1,31 @@
+.events-card {
+    margin-bottom: 40px;
+}
+
+.events-card img {
+    height: 180px;
+    object-fit: cover;
+}
+
+.events-container{
+    padding: 50px 0;
+}
+
+.events{
+    color: white;
+    font-size: 3em;
+    padding-left: 20%;
+    padding-top: 5%;
+}
+
+.events-card {
+ padding: 0;
+    color: #fff;
+}
+
+.img-card{
+    height: 300px;
+    width: auto;
+    align-items: center;
+    object-fit: cover;
+}

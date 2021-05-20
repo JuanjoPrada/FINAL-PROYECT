@@ -6,7 +6,21 @@ a{
 
 main {
     font-family: 'Poppins';
-    background-color: rgb(27, 27, 27);
-    background-image: linear-gradient(rgb(0, 0, 0), rgb(58, 58, 58));
+    background-color: #293133;
+}
 
+.back-button{
+    position: fixed;
+    z-index: 20;
+    border: 3px solid;
+    border-radius: 100px;
+    margin: 20px;
+    font-size: 1.2em;
+}
+
+body{
+    color: white;
+}
+body {
+    color: #fff;
 }

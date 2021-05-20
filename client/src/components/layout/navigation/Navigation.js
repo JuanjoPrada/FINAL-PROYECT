@@ -26,7 +26,7 @@ const Navigation = ({ loggedUser, storeUser, handleAlert }) => {
             alt="Oh-my-plan-logo"
             src={logo}
             width="70"
-            height="65"
+            height="69"
             className="d-inline-block align-top nav-logo"
           />{" "}
         </Link>
@@ -64,10 +64,7 @@ const Navigation = ({ loggedUser, storeUser, handleAlert }) => {
               </Link>
             </>
         }
-        <Link to="/contacto" className="nav-link">
-          Contacto
-            </Link>
-
+        <Link to="/contacto" className="nav-link">Contacto</Link>
         {
           loggedUser ? <span className="nav-link"> {'¡Hola, ' + loggedUser.username + "!" } </span> : ''
         }

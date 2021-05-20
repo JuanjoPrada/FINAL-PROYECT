@@ -15,7 +15,7 @@ router.get("/getAllPlaces", (req, res) => {
 
 router.get("/getAllPlaces/:city", (req, res) => {
   let city = req.params.city;
-  city = capitalizeText(city);
+  city = capitalizeText(city);  
 
   Places.find({ city: city })
     .select("name city image cost")

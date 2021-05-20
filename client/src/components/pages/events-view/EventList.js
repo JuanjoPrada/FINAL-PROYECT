@@ -11,8 +11,8 @@ const EventList = ({ images, name, url, dates, handleAlert, loggedUser, fetchUse
 console.log(loggedUser.favouriteEvents, id, "salgo mil veces")
   return (
     <Col lg={4}>
-      <Card className="event-list card">
-        <Card.Img variant="top" src={images[3].url} />
+      <Card className="events-card">
+        <Card.Img className="img-card" variant="top" src={images[3].url} />
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text>Fecha: {showDate}</Card.Text>

@@ -4,6 +4,7 @@ import { Container, Row, Modal, Spinner } from "react-bootstrap";
 import EventList from "./EventList";
 import Widget from "./widget";
 import { Link } from 'react-router-dom'
+import "./Events.css"
 
 class Events extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class Events extends Component {
     this.state = {
       events: undefined,
     };
-    
+
     this.tmasterApp = new TmasterApp();
   }
 
@@ -35,7 +36,6 @@ class Events extends Component {
     const { events } = this.state;
 
     return !events ? (
-
       <Modal
         show={this.state.showModal}
         onHide={() => this.setState({ showModal: false })}
@@ -45,20 +45,30 @@ class Events extends Component {
         </Modal.Body>
       </Modal>
     ) : (
-        <Container>
-          <br></br>
-          <Link className="btn btn-outline-light" to={`/madrid/categorias`}> ← Volver</Link>
-          <br></br>
-          <br></br>
-        <Widget />
-        <h1>Proximos Eventos en {city}</h1>
-        <hr />
-        <Row>
-          {events.map((elm) => (
-            <EventList  loggedUser={this.props.loggedUser} handleAlert={this.props.handleAlert} fetchUser={this.props.fetchUser} key={elm.id} {...elm} />
-          ))}
-        </Row>
-      </Container>
+      <>
+        <Link
+          className="btn btn-outline-light back-button"
+          to={`/${city}/categorias`}
+        >
+          ◁
+        </Link>
+        <Container className="events-container">
+          <Widget />
+          <h1>Proximos Eventos en {city}</h1>
+          <hr />
+          <Row>
+            {events.map((elm) => (
+              <EventList
+                loggedUser={this.props.loggedUser}
+                handleAlert={this.props.handleAlert}
+                fetchUser={this.props.fetchUser}
+                key={elm.id}
+                {...elm}
+              />
+            ))}
+          </Row>
+        </Container>
+      </>
     );
   }
 }

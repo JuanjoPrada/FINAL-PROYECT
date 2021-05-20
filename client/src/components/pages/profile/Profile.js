@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import ProfileCard from "./ProfileCard";
 import ProfileService from "../../../service/profile.service";
 import ShowFavourites from "./ShowFavourites";
+import './Profile.css'
 
 class Profile extends Component {
   constructor() {

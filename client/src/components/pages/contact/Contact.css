@@ -1,0 +1,36 @@
+.contact-container {
+    text-align: center;
+}
+
+.contact-header {
+    
+    background-image: url(./contacto.jpeg);
+    background-position-y: 30%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-filter: contrast(200%);
+    filter: contrast(100%);
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #fff;
+    color: #fff;
+    height: 60vh;
+    text-shadow: 2px 2px 8px #fff;
+}
+
+h1{
+    font-size: 5em;
+    margin: 30px auto 20px;
+    text-shadow: 2px 2px 8px #fff;
+}
+
+h4{
+    font-size: 1.5em;
+}
+
+p{
+    font-size: 0.9em;
+}
+
+Col{
+    padding-bottom: 20px;
+}

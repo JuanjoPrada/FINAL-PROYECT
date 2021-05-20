@@ -1,0 +1,73 @@
+.categories-container {
+    height: 50vh;
+    text-align: center;
+}
+.categories-container-rest {
+    background-image: url(./rest.jpg);
+    background-position-y: 60%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-filter: contrast(200%);
+    filter: contrast(100%);
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #fff;
+}
+.categories-container-event {
+    background-image: url(./concert.jpeg);
+    background-position-y: 65%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-filter: contrast(200%);
+    filter: contrast(100%);
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #fff;
+}
+.categories-container-place {
+    background-image: url(./place.jpg);
+    background-position-y: 60%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-filter: contrast(400%);
+    filter: contrast(100%);
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #fff;
+}
+
+.categories-container p {
+    color: #fff;
+    position: absolute;
+    top: 35%;
+    left: 0;
+    right: 0;
+    font-size: 6em;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 8px #fff;
+
+}
+:root {
+  --mainColor: #ffffff;
+}
+
+
+.categories-container p {
+  color: var(--mainColor);
+  text-decoration: none;
+}
+
+.categories-container p:hover {
+  color: transparent;
+  font-size: 6em;
+  -webkit-text-stroke:  var(--mainColor);
+}
+
+@supports not(-webkit-text-stroke: 2px rgb(255, 255, 255)) {
+ .categories-container p:hover {
+    text-shadow:
+      3px 3px 0 var(--mainColor),
+      -1px -1px 0 var(--mainColor),
+      1px -1px 0 var(--mainColor),
+      -1px 1px 0 var(--mainColor),
+      1px 1px 0 var(--mainColor);
+  }
+}
