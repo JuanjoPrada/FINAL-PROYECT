@@ -6,7 +6,6 @@ a{
 
 main {
     font-family: 'Poppins';
-    background-color: rgb(27, 27, 27);
-    background-image: linear-gradient(rgb(0, 0, 0), rgb(58, 58, 58));
+    background-color: #293133;
 
 }
