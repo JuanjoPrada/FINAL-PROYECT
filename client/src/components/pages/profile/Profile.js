@@ -23,7 +23,6 @@ class Profile extends Component {
     this.profileService
       .getFavs()
       .then((response) => {
-        console.log(response.data);
         this.setState({
           places: response.data.favouritePlaces,
           restaurants: response.data.favouriteRestaurants,

@@ -6,8 +6,8 @@ import Widget from "./widget";
 import { Link } from 'react-router-dom'
 
 class Events extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       events: undefined,
     };
@@ -55,7 +55,7 @@ class Events extends Component {
         <hr />
         <Row>
           {events.map((elm) => (
-            <EventList key={elm.id} {...elm} />
+            <EventList  loggedUser={this.props.loggedUser} handleAlert={this.props.handleAlert} fetchUser={this.props.fetchUser} key={elm.id} {...elm} />
           ))}
         </Row>
       </Container>

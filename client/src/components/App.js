@@ -57,6 +57,7 @@ class App extends Component {
               storeUser={(user) => this.storeUser(user)}
               loggedUser={this.state.loggedUser}
               handleAlert={(alertText) => this.handleAlert(alertText)}
+              fetchUser={() => this.fetchUser()}
             />
             :
             <Modal
