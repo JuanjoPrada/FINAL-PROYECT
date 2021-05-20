@@ -1,0 +1,8 @@
+.events-card {
+    margin-bottom: 40px;
+}
+
+.events-card img {
+    height: 180px;
+    object-fit: cover;
+}

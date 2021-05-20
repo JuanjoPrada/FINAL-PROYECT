@@ -36,7 +36,7 @@ const Footer = () =>
         </div>
     </div>
 
-    <div className="footer-copyright text-center py-3">© 2020 Copyright: OH MY PLAN!
+    <div className="footer-copyright text-center py-3">© 2021 Copyright: OH MY PLAN!
         
     </div>
 

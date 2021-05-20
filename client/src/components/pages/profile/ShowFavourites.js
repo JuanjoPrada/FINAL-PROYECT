@@ -1,4 +1,4 @@
-import { Row } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import FavouritePlacesCard from "./FavouritePlacesCard";
 import FavouriteRestaurantsCard from "./FavouriteRestaurantsCard";
 import FavouriteEventsCard from "./FavouriteEventsCard"
@@ -7,23 +7,24 @@ import FavouriteEventsCard from "./FavouriteEventsCard"
 const ShowFavourites = ({ places, restaurants, events }) => {
   return (
     <>
-    
       <Row>
-        <h2>Tus Lugares Favoritos</h2>
-        {places.map((elm) => (
-          <FavouritePlacesCard key={elm._id} {...elm} />))}
-      </Row>
+        <Col>
+          <h2>Tus Lugares <br></br> Favoritos</h2>
+          {places.map((elm) => (
+            <FavouritePlacesCard key={elm._id} {...elm} />))}
+        </Col>
 
-      <Row>
-        <h2>Tus Restaurantes Favoritos</h2>
-        {restaurants.map((elm) => (
-          <FavouriteRestaurantsCard key={elm._id} {...elm} />))}
-      </Row>
+        <Col>
+          <h2>Tus Restaurantes<br></br> Favoritos</h2>
+          {restaurants.map((elm) => (
+            <FavouriteRestaurantsCard key={elm._id} {...elm} />))}
+        </Col>
 
-      <Row>
-        <h2>Tus Eventos Favoritos</h2>
-        {events.map((elm, idx) => (
-          <FavouriteEventsCard key={idx} eventId={elm} />))}
+        <Col>
+          <h2>Tus Eventos<br></br> Favoritos</h2>
+          {events.map((elm, idx) => (
+            <FavouriteEventsCard key={idx} eventId={elm} />))}
+        </Col>
       </Row>
     </>
   );

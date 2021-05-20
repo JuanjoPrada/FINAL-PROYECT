@@ -4,6 +4,7 @@ import { Container, Row, Modal, Spinner } from "react-bootstrap";
 import EventList from "./EventList";
 import Widget from "./widget";
 import { Link } from 'react-router-dom'
+import "./Events.css"
 
 class Events extends Component {
   constructor() {

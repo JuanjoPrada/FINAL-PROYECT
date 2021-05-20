@@ -1,15 +1,14 @@
 
-import {Container, Row, Col} from 'react-bootstrap'
+import {Row, Col } from 'react-bootstrap'
+import "./Contact.css"
 
 const ContactPage = () => {
     return (
-    <Container>
-            <div>
-                <section>
-                    <h1>Contacta con Nosotros</h1>
-                    <h3>Donde quieras, como quieras</h3>
-                </section>
-            </div>
+        <>
+            <section className="contact-header">
+                <h1>Contacta con Nosotros</h1>
+                <h3>Donde quieras, como quieras</h3>
+            </section>
             <Row>
                 <Col lg={4}>
                     <article>
@@ -33,7 +32,7 @@ const ContactPage = () => {
                     </article>
                 </Col>
             </Row>
-    </Container>
+        </>
     )
 }
 
