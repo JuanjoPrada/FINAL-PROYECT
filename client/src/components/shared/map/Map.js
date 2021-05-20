@@ -95,14 +95,13 @@ class MapContainer extends Component {
             margin: "0 auto",
             borderRadius: "10px"
           }}
-            className="map"
           google={this.props.google}
           zoom={12}
           initialCenter={{ lat: latitude, lng: longitude }}
           disableDefaultUI={true}
-        >
+          >
           {this.displayMarkers()}
-            </Map>}
+          </Map>}
       </div>
     );
   }

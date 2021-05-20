@@ -46,10 +46,7 @@ class Events extends Component {
       </Modal>
     ) : (
         <Container>
-          <br></br>
-          <Link className="btn btn-outline-light" to={`/madrid/categorias`}> ← Volver</Link>
-          <br></br>
-          <br></br>
+        <Link className="btn btn-outline-light" to={`/${city}/categorias`}> ← Volver</Link>
         <Widget />
         <h1>Proximos Eventos en {city}</h1>
         <hr />

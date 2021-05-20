@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import PlacesService from './../../../service/places.service'
 import PlacesCard from './Places-card'
-import { Row, Modal, Spinner } from 'react-bootstrap'
+import { Row, Modal, Spinner, Container } from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 
 class PlacesList extends Component {
@@ -30,6 +30,7 @@ class PlacesList extends Component {
 
   render() {
     const { places } = this.state
+    const { city } = this.props.match.params;
     
     return !places ? (
         <>
@@ -45,11 +46,14 @@ class PlacesList extends Component {
       </>
     )
       : (
+        <Container>
+      <Link className="btn btn-outline-light" to={`/${city}/categorias`}> ← Volver</Link>
       <Row>
         {places.map((elm) => (
           <PlacesCard key={elm._id} {...elm} />
         ))}
-      </Row>
+          </Row>
+        </Container>
     );
   }
 }

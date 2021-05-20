@@ -64,10 +64,7 @@ const Navigation = ({ loggedUser, storeUser, handleAlert }) => {
               </Link>
             </>
         }
-        <Link to="/contacto" className="nav-link">
-          Contacto
-            </Link>
-
+        <Link to="/contacto" className="nav-link">Contacto</Link>
         {
           loggedUser ? <span className="nav-link"> {'¡Hola, ' + loggedUser.username + "!" } </span> : ''
         }

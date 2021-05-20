@@ -73,7 +73,7 @@ class RestaurantDetails extends Component {
                   </Col>
                 </Row>
                 <br></br>
-                <Row>
+                <Row >
                     <MapContainer {...this.props} />
                 </Row>
               </>
