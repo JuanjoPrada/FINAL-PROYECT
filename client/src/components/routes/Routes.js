@@ -14,6 +14,7 @@ import AdminPanel from '../pages/admin/AdminPanel'
 import Events from '../pages/events-view/Events'
 import CityList from '../pages/cities/CityList'
 import Categories from '../pages/categories/Categories'
+import ContactPage from './../pages/contact/ContactPage'
 
 const Routes = ({ storeUser, loggedUser, handleAlert, adminUser }) => {
 
@@ -22,13 +23,12 @@ const Routes = ({ storeUser, loggedUser, handleAlert, adminUser }) => {
             <Route path="/" exact render={() => <IndexPage />} />
             <Route path="/ciudades" exact render={props => <CityList {...props} />} />
             <Route path="/:city/categorias" exact render={props => <Categories {...props} />} />
+            <Route path="/contacto" exact render={() => <ContactPage />} />
             <Route path="/:city/lugares-de-interes" exact render={props => <Places {...props} />} />
             <Route path="/:city/lugares-de-interes/detalles/:place_id" render={props => <PlacesDetails {...props} />} />
-            <Route path="/editar/:place_id" render={props => <EditPlace history={props.history}{...props} />} />
             <Route path="/lugares-de-interes/eliminar/:place_id" render={<Redirect to="/inicio-sesion" />} />
             <Route path="/:city/restaurantes" exact render={props => <Restaurants {...props} />} />
             <Route path="/:city/restaurantes/detalles/:restaurant_id" render={props => <RestaurantDetails {...props} />} />
-            <Route path="/:city/restaurantes/editar/:restaurant_id" render={props => <EditRestaurant {...props} />} />
             <Route path="/registro" render={props => <Signup history={props.history} handleAlert={handleAlert} />} />
             <Route path="/inicio-sesion" render={props => <Login storeUser={storeUser} history={props.history} handleAlert={handleAlert} />} />
             <Route path="/perfil" render={() => loggedUser ? <Profile loggedUser={loggedUser} /> : <Redirect to="/inicio-sesion" />} />
