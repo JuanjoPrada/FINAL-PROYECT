@@ -1,7 +1,8 @@
 import ProfileService from "../../../service/profile.service"
 import { Component } from "react";
-import noFavPic from './noFavPic.png'
-import favPic from './favPic.png'
+import noFavPic from './favorite_border.svg'
+import favPic from './favorite_white.svg'
+import './star.css'
 
 class FavButton extends Component {
   constructor(props) {
@@ -42,7 +43,7 @@ class FavButton extends Component {
 
   render() {
     return (
-        <img onClick={() => this.onClick()} src={this.state.added ? this.state.favIcon : this.state.noFavIcon} alt={'Fav Icon'} />
+      <img className='fav-btn' onClick={() => this.onClick()} src={this.state.added ? this.state.favIcon : this.state.noFavIcon} alt={'Fav Icon'} />
     );
   }
 }
